@@ -1,0 +1,73 @@
+Koncepcja: "Neurologiczny Atlas Umysłu Poety"
+Zamiast tradycyjnej listy, tworzymy interaktywną, wizualną mapę umysłu autora. Każdy wiersz to nie wpis na liście, a neuron, gwiazda lub wyspa w mrocznej, abstrakcyjnej przestrzeni, którą użytkownik może eksplorować.
+1. Pierwsze Wrażenie (Strona Startowa)
+Zero Menu, Pełna Immersja: Użytkownik nie wita standardowej strony z menu. Zamiast tego, od razu ląduje w "Atlasie".
+Wizualizacja: Ekran jest ciemny, niemal czarny. W przestrzeni unoszą się świetliste, pulsujące "węzły" (neurony). Każdy węzeł to jeden wiersz. Są one połączone cienkimi, eterycznymi liniami, które subtelnie pulsują, sugerując ukryte powiązania między tekstami. W tle może poruszać się delikatna, abstrakcyjna mgławica lub cyfrowy "szum".
+Interakcja: Użytkownik nie klika w menu. Porusza się po tej przestrzeni, przeciągając myszką lub palcem (pan & zoom), odkrywając kolejne węzły. To natychmiast komunikuje, że nie jest to zwykła strona – to świat do zbadania.
+2. Interakcja z Poezją (Percepcja)
+Odkrywanie: Gdy użytkownik najedzie kursorem na węzeł, ten rozbłyska mocniej, a jego tytuł (np. "Kadłubek") pojawia się obok. Linie łączące go z innymi tematycznie powiązanymi wierszami mogą na chwilę stać się jaśniejsze.
+Wejście do Świata Wiersza: Kliknięcie węzła nie przenosi na osobną podstronę. Zamiast tego, "Atlas" płynnie przybliża się do wybranego węzła. Widok mapy oddala się, a na ekranie dominuje ten jeden, wybrany wiersz.
+Prezentacja Wiersza i Grafiki:
+Wygenerowana przez AI grafika dla danego wiersza staje się tłem lub głównym elementem wizualnym, często animowanym (np. subtelny ruch, efekt paralaksy).
+Tekst wiersza nie pojawia się od razu. Materializuje się na ekranie – linijka po linijce, słowo po słowie, a może nawet litery składają się z cyfrowego szumu. To wzmacnia poczucie "kodowania" i "odkrywania".
+Interaktywne Słowa Kluczowe (Najważniejszy element):
+Wewnątrz tekstu wiersza, kluczowe, powtarzalne lub najbardziej naładowane znaczeniowo słowa (np. "kadłubek", "nagroda", "wir", "usta") są subtelnie podświetlone.
+Najechanie na słowo kluczowe może wywołać efekt – np. krótką definicję-interpretację, która pojawia się obok, lub powiązaną mikro-grafikę.
+Kliknięcie słowa kluczowego powoduje, że widok oddala się z powrotem do "Atlasu", ale teraz podświetlone są wszystkie inne wiersze (węzły), które również zawierają to słowo lub motyw. To tworzy nieliniową ścieżkę nawigacji, opartą na skojarzeniach, a nie na sztywnej liście. Użytkownik może podążać za motywem "pustki" lub "miłości" przez cały umysł poety.
+3. Design i Atmosfera
+Styl: Mroczny, minimalistyczny, elegancki, z elementami glitch-artu lub estetyki neurologicznej. Dużo negatywnej przestrzeni.
+Kolorystyka: Głównie czerń, biel i jeden mocny, akcentowy kolor (np. cyjan, magenta, złoto), który ożywia interakcje.
+Dźwięk: Subtelne, ambientowe tło dźwiękowe. Cichy puls, cyfrowy szum, delikatny dźwięk przy interakcji z węzłem. Dźwięk można wyłączyć.
+Dlaczego ta koncepcja jest idealna dla tego autora?
+Odzwierciedla "zakodowaną" naturę poezji: Strona nie podaje wierszy na tacy. Zmusza do eksploracji i interakcji, aby "odkodować" ich treść i powiązania.
+Podkreśla kontrowersyjność: Niestandardowy, odważny design od razu wyróżnia stronę i komunikuje, że mamy do czynienia z czymś nietypowym.
+Tworzy spójny świat: Zamiast zbioru pojedynczych tekstów, otrzymujemy wrażenie podróży po jednym, skomplikowanym umyśle, gdzie wszystko jest ze sobą połączone.
+Nowoczesność i Innowacja: Wykorzystanie interaktywnej mapy i nieliniowej nawigacji jest świeże i idealnie pasuje do możliwości, jakie daje React i nowoczesne technologie webowe.
+Plan Realizacji Projektu: "Poetry Atlas"
+Cel Główny:
+Stworzyć w pełni interaktywną, immersyjną i dostępną platformę do eksploracji poezji kontrowersyjnego autora, wykorzystując nowatorski design i najnowsze technologie webowe.
+Stos Technologiczny (zgodnie z wymaganiami):
+Framework: React (z Vite.js)
+Język: TypeScript
+Stylowanie: Tailwind CSS
+Animacje i Interakcje: Framer Motion
+Internacjonalizacja (i18n): react-i18next
+Zarządzanie Meta Tagami & SEO: react-helmet-async
+Ikony: lucide-react
+Przechowywanie Danych: Lokalne pliki JSON (bez zewnętrznej bazy)
+Kluczowe Funkcjonalności i Implementacja:
+1. "Neurologiczny Atlas" - Strona Główna
+Wizualizacja: Zbuduję główny widok jako komponent Atlas.tsx, wykorzystując Framer Motion do animacji i pozycjonowania "węzłów" (wierszy). Każdy węzeł będzie interaktywnym elementem, który reaguje na najechanie i kliknięcie. Połączenia między węzłami będą renderowane jako animowane ścieżki SVG.
+Interaktywna Percepcja Poezji:
+Kliknięcie węzła zainicjuje płynną animację layout z Framer Motion, która przybliży widok.
+Treść wiersza, wraz z grafiką AI, pojawi się w modalu lub w widoku pełnoekranowym. Tekst będzie animowany przy wejściu (np. efekt "pisania na maszynie" lub "pojawiania się").
+Słowa kluczowe w tekście będą osobnymi komponentami, które przy interakcji (hover) wywołają Tooltip z dodatkową informacją lub (przy kliknięciu) zaktualizują stan Atlasu, podświetlając powiązane wiersze.
+2. Internacjonalizacja (i18n) - Wersje PL/EN
+Pełne Pokrycie: Zgodnie z wymaganiem, absolutnie każdy tekst widoczny dla użytkownika (tytuły, opisy, etykiety ARIA, a nawet dane o autorze) będzie zarządzany przez react-i18next. Stworzę pliki pl.json i en.json.
+Routing Językowy: Skonfiguruję routing (np. za pomocą wouter lub react-router), aby obsługiwał ścieżki /:lang/, np. /pl/wiersz/kadlubek i /en/poem/torso. Język polski będzie domyślny, a ścieżka / będzie automatycznie przekierowywać na /pl/.
+Dynamiczny lang: Komponent <head> będzie zarządzany przez react-helmet-async, dynamicznie ustawiając atrybut <html lang="pl"> lub <html lang="en">.
+3. Motyw Jasny/Ciemny
+Implementacja: Wykorzystam mechanizm klas CSS z Tailwind (dark:). Stworzę kontekst (React Context) do zarządzania motywem i przełącznik, który będzie dodawał lub usuwał klasę dark z głównego elementu <html>. Wybór użytkownika będzie zapisywany w localStorage.
+4. Nowatorski Sposób Wyświetlenia "O Autorze"
+Pomysł: Zamiast standardowej podstrony, sekcja "O Autorze" będzie ukrytym "węzłem" w Atlasie. Być może będzie to centralny, największy neuron, lub węzeł, który ujawnia się dopiero po interakcji z kilkoma innymi wierszami.
+Wizualizacja: Po kliknięciu, widok może przedstawiać kolaż grafik AI, a tekst o autorze będzie składał się z "fragmentów myśli" – krótkich, animowanych zdań pojawiających się w różnych miejscach ekranu, tworząc nieliniową, poetycką biografię. Będzie to bardziej doświadczenie artystyczne niż czytanie bloku tekstu.
+5. Dostępność (a11y) - Priorytet Zero
+Etykiety ARIA: Każdy interaktywny element bez widocznego tekstu (przyciski, węzły w Atlasie) otrzyma precyzyjny, tłumaczony aria-label. Np. węzeł "Kadłubek" będzie miał aria-label="Otwórz wiersz: Kadłubek".
+Kontrast: Zdefiniuję palety kolorów dla motywu jasnego i ciemnego w tailwind.config.js, upewniając się, że wszystkie kombinacje spełniają wymogi WCAG AA (kontrast min. 4.5:1).
+Nawigacja Klawiaturowa: Atlas będzie w pełni nawigowalny za pomocą klawiszy Tab (do przechodzenia między węzłami) i Enter (do aktywacji). W widoku wiersza fokus będzie zarządzany tak, aby nie "uciekał" z modala.
+Przycisk "Przewiń na górę": Zaimplementuję go jako globalny komponent, który pojawia się po przewinięciu strony, z odpowiednim aria-label i płynną animacją. Będzie miał wysoki z-index, aby uniknąć problemów z przykrywaniem.
+Zaktualizowany Plan Realizacji Projektu: "Poetry Atlas" (v2)
+6. Generowanie i Integracja Grafiki AI (Nowy Punkt)
+Generowanie Zasobów: Zobowiązuję się do wygenerowania jednej, unikalnej grafiki AI dla każdego wiersza oraz dla sekcji "O Autorze". Grafiki będą utrzymane w spójnym, mrocznym i surrealistycznym stylu, aby pasowały do atmosfery "Neurologicznego Atlasu".
+Problem Czytelności Tekstu (Rozwiązanie): Masz absolutną rację – umieszczenie tekstu bezpośrednio na złożonej grafice zniszczyłoby czytelność i dostępność. Zamiast tego zaimplementuję jedno z dwóch profesjonalnych rozwiązań:
+Układ Dzielony (Split Layout): W widoku wiersza ekran zostanie podzielony. Po jednej stronie (np. 50-60% szerokości) pojawi się grafika, a po drugiej, na czystym, kontrastowym tle (ciemnoszarym lub białym, w zależności od motywu), będzie renderowany tekst wiersza. To rozwiązanie jest eleganckie, czytelne i w pełni dostępne.
+Nakładka z Gradientem (Gradient Overlay): Grafika będzie stanowić tło, ale nałożę na nią półprzezroczystą, ciemną warstwę (np. gradient od rgba(0,0,0,0.8) do rgba(0,0,0,0.6)), która znacząco "przyciemni" obraz, zapewniając idealny kontrast dla białego tekstu na wierzchu. Jest to bardziej immersyjne, ale wymaga starannego doboru kolorów, aby spełnić wymogi WCAG.
+Decyzja: Zaproponuję Ci wizualizację obu podejść, a Ty zdecydujesz, które bardziej odpowiada Twojej wizji.
+7. Automatyczne Pobieranie Treści (Content Scraping) (Nowy Punkt)
+Źródło Danych: Zgodnie z Twoim życzeniem, nie będę prosił Cię o ręczne dostarczanie tekstów. Napiszę jednorazowy skrypt (scraper), który automatycznie odwiedzi Twoją obecną stronę https://poetry.netlify.app/.
+Proces:
+Skrypt przeanalizuje strukturę HTML Twojej strony.
+Wyodrębni tytuł i treść każdego wiersza.
+Wyodrębni tekst z sekcji "O Autorze".
+Wszystkie pobrane dane zostaną automatycznie sformatowane i zapisane w plikach JSON w naszym projekcie, gotowe do użycia przez system tłumaczeń i18next.
+Korzyści: To znacznie przyspieszy proces i zapewni, że wszystkie istniejące treści zostaną przeniesione bezbłędnie. W przyszłości będziesz mógł łatwo edytować te pliki JSON, aby dodawać nowe wiersze.
