@@ -49,7 +49,7 @@ function MainApp() {
       <div className="fixed bottom-4 left-4 z-40">
         <Button
     onClick={() => setShowAuthor(true)}
-    className="bg-blue-600 text-white hover:bg-blue-700 transition ease-in-out duration-200"
+    className="bg-[hsl(180,60%,70%)] text-white hover:bg-[hsl(200,80%,65%)] transition ease-in-out duration-200"
     data-testid="button-show-author"
   >
           <User className="h-4 w-4 mr-2" />
