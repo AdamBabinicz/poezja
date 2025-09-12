@@ -2,7 +2,7 @@
 export interface Poem {
   id: string;
   title: string;
-  content: string;
+  content: string[];
   imageSrc: string;
   keywords: string[];
   position: { x: number; y: number };
@@ -38,17 +38,19 @@ export const mockPoems: Poem[] = realPoemTitles.map((title, index) => {
     .replace(/^-|-$/g, '');
 
   // Generate sample content based on title
-  const sampleContent = `${title}
-
-W głębi myśli, gdzie słowa się rodzą,
-Kryje się prawda o ${title.toLowerCase()}.
-Każdy wers to nowy świat,
-Każde słowo to klucz do zrozumienia.
-
-Między liniami ukryte są znaczenia,
-Które czekają na odkrycie,
-W ciszy poezji, w rytmie wersów,
-Odnajdujemy siebie.`;
+  const sampleContent = [
+    title,
+    "",
+    "W głębi myśli, gdzie słowa się rodzą,",
+    `Kryje się prawda o ${title.toLowerCase()}.`,
+    "Każdy wers to nowy świat,",
+    "Każde słowo to klucz do zrozumienia.",
+    "",
+    "Między liniami ukryte są znaczenia,",
+    "Które czekają na odkrycie,",
+    "W ciszy poezji, w rytmie wersów,",
+    "Odnajdujemy siebie."
+  ];
 
   // Generate keywords from title
   const keywords = title

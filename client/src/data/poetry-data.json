@@ -3,7 +3,25 @@
     {
       "id": "moc",
       "title": "Moc",
-      "content": "Neutrina mocy przeszyły wstępujące ciało\n\nMocarze zebrali się na górze\n\nIch imiona m, a i s\n\nKażdy z nich niepokonany kłania się śmierci\n\nW dębowych ławkach zaklęta wiara\n\nW nich twarze spijające ostatnie krople\n\nprzed suszą\n\nNie wystarczy dla wszystkich\n\nŁaknący odeszli i spragnieni.",
+      "content": [
+        "Neutrina mocy przeszyły wstępujące ciało",
+        "",
+        "Mocarze zebrali się na górze",
+        "",
+        "Ich imiona m, a i s",
+        "",
+        "Każdy z nich niepokonany kłania się śmierci",
+        "",
+        "W dębowych ławkach zaklęta wiara",
+        "",
+        "W nich twarze spijające ostatnie krople",
+        "",
+        "przed suszą",
+        "",
+        "Nie wystarczy dla wszystkich",
+        "",
+        "Łaknący odeszli i spragnieni."
+      ],
       "imageSrc": "/images/placeholder-1.jpg",
       "keywords": ["moc", "neutrina", "mocarze", "wiara"],
       "position": { "x": 520, "y": 300 },
@@ -12,7 +30,7 @@
     {
       "id": "niespelnienie",
       "title": "Niespełnienie",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-2.jpg",
       "keywords": ["niespełnienie", "tęsknota", "pragnienie"],
       "position": { "x": 460, "y": 180 },
@@ -21,7 +39,7 @@
     {
       "id": "obietnica",
       "title": "Obietnica",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-3.jpg",
       "keywords": ["obietnica", "nadzieja", "przyszłość"],
       "position": { "x": 380, "y": 220 },
@@ -30,7 +48,7 @@
     {
       "id": "witryna",
       "title": "Witryna",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-4.jpg",
       "keywords": ["witryna", "szkło", "odbicie"],
       "position": { "x": 300, "y": 280 },
@@ -39,7 +57,7 @@
     {
       "id": "wiersz-na-czasy-eschatyczne",
       "title": "Wiersz na czasy eschatyczne",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-5.jpg",
       "keywords": ["eschatologia", "koniec", "przepowiednia"],
       "position": { "x": 240, "y": 360 },
@@ -48,7 +66,7 @@
     {
       "id": "my-wszechswiat",
       "title": "My, Wszechświat",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-6.jpg",
       "keywords": ["wszechświat", "kosmologia", "człowiek"],
       "position": { "x": 220, "y": 440 },
@@ -57,7 +75,7 @@
     {
       "id": "apokalipsa-wedlug-adama",
       "title": "Apokalipsa według Adama",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-7.jpg",
       "keywords": ["apokalipsa", "Adam", "stworzenie"],
       "position": { "x": 240, "y": 520 },
@@ -66,7 +84,7 @@
     {
       "id": "marzenie",
       "title": "Marzenie",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-8.jpg",
       "keywords": ["marzenie", "sen", "wyobraźnia"],
       "position": { "x": 300, "y": 580 },
@@ -75,7 +93,7 @@
     {
       "id": "kadlubek",
       "title": "Kadłubek",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-9.jpg",
       "keywords": ["kadłubek", "forma", "struktura"],
       "position": { "x": 380, "y": 600 },
@@ -84,7 +102,7 @@
     {
       "id": "uczucie",
       "title": "Uczucie",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-10.jpg",
       "keywords": ["uczucie", "emocja", "serce"],
       "position": { "x": 460, "y": 580 },
@@ -93,7 +111,7 @@
     {
       "id": "szal",
       "title": "Szał",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-11.jpg",
       "keywords": ["szał", "ekstaza", "uniesienie"],
       "position": { "x": 520, "y": 520 },
@@ -102,7 +120,7 @@
     {
       "id": "chlopiec-z-basenu",
       "title": "Chłopiec z basenu",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-12.jpg",
       "keywords": ["chłopiec", "basen", "woda"],
       "position": { "x": 560, "y": 440 },
@@ -111,7 +129,7 @@
     {
       "id": "dlon",
       "title": "Dłoń",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-13.jpg",
       "keywords": ["dłoń", "dotyk", "gest"],
       "position": { "x": 580, "y": 360 },
@@ -120,7 +138,7 @@
     {
       "id": "miara-wszechrzeczy",
       "title": "Miara Wszechrzeczy",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-14.jpg",
       "keywords": ["miara", "wszechrzeczy", "wymiar"],
       "position": { "x": 560, "y": 280 },
@@ -129,7 +147,7 @@
     {
       "id": "poeci-sa-wsrod-nas",
       "title": "Poeci są wśród nas",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-15.jpg",
       "keywords": ["poeci", "poezja", "społeczeństwo"],
       "position": { "x": 520, "y": 200 },
@@ -138,7 +156,7 @@
     {
       "id": "zlecenie-od-pana-boga",
       "title": "Zlecenie od Pana Boga",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-16.jpg",
       "keywords": ["zlecenie", "Bóg", "misja"],
       "position": { "x": 460, "y": 140 },
@@ -147,7 +165,7 @@
     {
       "id": "droga",
       "title": "Droga",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-17.jpg",
       "keywords": ["droga", "ścieżka", "podróż"],
       "position": { "x": 380, "y": 120 },
@@ -156,7 +174,7 @@
     {
       "id": "nagroda",
       "title": "Nagroda",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-18.jpg",
       "keywords": ["nagroda", "osiągnięcie", "cel"],
       "position": { "x": 300, "y": 140 },
@@ -165,7 +183,7 @@
     {
       "id": "pietno",
       "title": "Piętno",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-19.jpg",
       "keywords": ["piętno", "znak", "stygmat"],
       "position": { "x": 240, "y": 200 },
@@ -174,7 +192,7 @@
     {
       "id": "pytanie",
       "title": "Pytanie",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-20.jpg",
       "keywords": ["pytanie", "wątpliwość", "poszukiwanie"],
       "position": { "x": 220, "y": 280 },
@@ -183,7 +201,7 @@
     {
       "id": "dziadek-do-orzechow",
       "title": "Dziadek do orzechów",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-21.jpg",
       "keywords": ["dziadek", "orzechy", "bajka"],
       "position": { "x": 200, "y": 360 },
@@ -192,7 +210,7 @@
     {
       "id": "rozrzutnosc",
       "title": "Rozrzutność",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-22.jpg",
       "keywords": ["rozrzutność", "marnotrawstwo", "hojność"],
       "position": { "x": 220, "y": 440 },
@@ -201,7 +219,7 @@
     {
       "id": "przyszlosc",
       "title": "Przyszłość",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-23.jpg",
       "keywords": ["przyszłość", "czas", "nadzieja"],
       "position": { "x": 260, "y": 520 },
@@ -210,7 +228,7 @@
     {
       "id": "nagroda-i-kara",
       "title": "Nagroda i kara",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-24.jpg",
       "keywords": ["nagroda", "kara", "sprawiedliwość"],
       "position": { "x": 320, "y": 580 },
@@ -219,7 +237,7 @@
     {
       "id": "swiaty",
       "title": "Światy",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-25.jpg",
       "keywords": ["światy", "wymiary", "rzeczywistość"],
       "position": { "x": 400, "y": 600 },
@@ -228,7 +246,7 @@
     {
       "id": "wiersz-nostalgiczny",
       "title": "Wiersz nostalgiczny",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-26.jpg",
       "keywords": ["nostalgia", "przeszłość", "wspomnienie"],
       "position": { "x": 480, "y": 580 },
@@ -237,7 +255,7 @@
     {
       "id": "pamiec",
       "title": "Pamięć",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-27.jpg",
       "keywords": ["pamięć", "wspomnienie", "przeszłość"],
       "position": { "x": 540, "y": 520 },
@@ -246,7 +264,7 @@
     {
       "id": "glos",
       "title": "Głos",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-28.jpg",
       "keywords": ["głos", "dźwięk", "komunikacja"],
       "position": { "x": 580, "y": 440 },
@@ -255,7 +273,7 @@
     {
       "id": "dylemat",
       "title": "Dylemat",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-29.jpg",
       "keywords": ["dylemat", "wybór", "wątpliwość"],
       "position": { "x": 600, "y": 360 },
@@ -264,7 +282,7 @@
     {
       "id": "tajemnica",
       "title": "Tajemnica",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-30.jpg",
       "keywords": ["tajemnica", "sekret", "ukrycie"],
       "position": { "x": 580, "y": 280 },
@@ -273,7 +291,7 @@
     {
       "id": "spacer",
       "title": "Spacer",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-31.jpg",
       "keywords": ["spacer", "wędrówka", "ruch"],
       "position": { "x": 540, "y": 200 },
@@ -282,7 +300,7 @@
     {
       "id": "dobrze-ze-jestes",
       "title": "Dobrze, że jesteś",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-32.jpg",
       "keywords": ["obecność", "wdzięczność", "istnienie"],
       "position": { "x": 480, "y": 140 },
@@ -291,7 +309,7 @@
     {
       "id": "zdziwienie",
       "title": "Zdziwienie",
-      "content": "",
+      "content": [],
       "imageSrc": "/images/placeholder-33.jpg",
       "keywords": ["zdziwienie", "zaskoczenie", "cud"],
       "position": { "x": 400, "y": 120 },

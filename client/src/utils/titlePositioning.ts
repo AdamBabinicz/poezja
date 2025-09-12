@@ -49,7 +49,7 @@ function boundsOverlap(bounds1: TitleBounds, bounds2: TitleBounds): boolean {
 
 export function calculateOptimalTitlePosition(
   currentPoem: Poem,
-  allPoems: Poem[],
+  allPoems: Poem[] = [],
   nodeSize: number
 ): TitlePosition {
   const baseX = currentPoem.position.x;
