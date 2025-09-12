@@ -44,8 +44,12 @@ export default function NeuralAtlas() {
   }, []);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    // Only handle left mouse button
+    if (e.button !== 0) return;
+    
     // Don't start dragging if clicking on a neural node
-    if ((e.target as Element).closest('[data-neural-node]')) {
+    const target = e.target as Element;
+    if (target.closest('[data-neural-node]') || target.hasAttribute('data-neural-node')) {
       return;
     }
     setIsDragging(true);
@@ -103,7 +107,7 @@ export default function NeuralAtlas() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-background">
       {/* Background texture */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="w-full h-full bg-gradient-to-br from-neural-node via-transparent to-neural-connection" />
       </div>
 
@@ -139,7 +143,7 @@ export default function NeuralAtlas() {
                 />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
+            <rect width="100%" height="100%" fill="url(#grid)" style={{ pointerEvents: 'none' }} />
 
             {/* Neural connections */}
             {poems.map(poem => 

@@ -41,6 +41,7 @@ export default function NeuralNode({
         r={nodeSize * 2}
         fill="url(#nodeGlow)"
         opacity={isHighlighted ? 0.6 : 0.3}
+        style={{ pointerEvents: 'none' }}
         animate={{
           r: isHighlighted ? nodeSize * 2.5 : nodeSize * 2,
           opacity: isHighlighted ? 0.8 : 0.3
@@ -79,6 +80,7 @@ export default function NeuralNode({
         stroke="hsl(180 60% 70%)"
         strokeWidth={1}
         opacity={0.6}
+        style={{ pointerEvents: 'none' }}
         animate={{
           r: [nodeSize, nodeSize * 1.5, nodeSize],
           opacity: [0.6, 0, 0.6]

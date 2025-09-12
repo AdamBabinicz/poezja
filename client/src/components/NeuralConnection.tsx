@@ -44,6 +44,7 @@ export default function NeuralConnection({
         strokeWidth={isActive ? 2 : 1}
         strokeDasharray="2,2"
         className="filter drop-shadow-sm"
+        style={{ pointerEvents: 'none' }}
         animate={{
           strokeWidth: isActive ? 3 : 1,
           stroke: isActive ? "hsl(40 60% 75%)" : "hsl(200 80% 65%)"
@@ -58,6 +59,7 @@ export default function NeuralConnection({
           r="2"
           fill="hsl(180 60% 70%)"
           opacity="0.8"
+          style={{ pointerEvents: 'none' }}
         >
           <animateMotion
             dur="3s"
