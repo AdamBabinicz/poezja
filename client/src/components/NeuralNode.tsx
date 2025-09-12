@@ -61,6 +61,7 @@ export default function NeuralNode({
         transition={{ duration: 0.3 }}
         aria-label={t('accessibility.neuralNode', { title: poem.title })}
         data-testid={`neural-node-${poem.id}`}
+        data-neural-node="true"
       />
       
       {/* Pulsing animation */}

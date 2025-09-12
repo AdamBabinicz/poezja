@@ -44,6 +44,10 @@ export default function NeuralAtlas() {
   }, []);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    // Don't start dragging if clicking on a neural node
+    if ((e.target as Element).closest('[data-neural-node]')) {
+      return;
+    }
     setIsDragging(true);
     setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
   }, [position]);
