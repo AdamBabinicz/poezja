@@ -168,6 +168,7 @@ export default function NeuralAtlas() {
                 onHover={setHoveredPoem}
                 isHighlighted={isPoemHighlighted(poem)}
                 scale={scale}
+                allPoems={poems}
               />
             ))}
           </svg>

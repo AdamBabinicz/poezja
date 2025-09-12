@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import type { Poem } from '@/data/mockPoems';
+import { calculateOptimalTitlePosition } from '@/utils/titlePositioning';
 
 interface NeuralNodeProps {
   poem: Poem;
@@ -8,6 +9,7 @@ interface NeuralNodeProps {
   onHover: (poem: Poem | null) => void;
   isHighlighted: boolean;
   scale: number;
+  allPoems: Poem[];
 }
 
 export default function NeuralNode({ 
@@ -15,12 +17,16 @@ export default function NeuralNode({
   onClick, 
   onHover, 
   isHighlighted,
-  scale 
+  scale,
+  allPoems 
 }: NeuralNodeProps) {
   const { t } = useTranslation();
 
   const nodeSize = Math.max(8, Math.min(24, 12 * scale));
   const textOpacity = scale > 0.6 ? 1 : 0;
+  
+  // Calculate optimal title position to avoid overlaps
+  const titlePosition = calculateOptimalTitlePosition(poem, allPoems, nodeSize);
 
   return (
     <motion.g
@@ -86,12 +92,16 @@ export default function NeuralNode({
       
       {/* Title text */}
       <motion.text
-        x={poem.position.x}
-        y={poem.position.y - nodeSize - 8}
-        textAnchor="middle"
+        x={titlePosition.x}
+        y={titlePosition.y}
+        textAnchor={titlePosition.anchor}
         className="font-serif text-xs fill-foreground pointer-events-none"
         opacity={textOpacity}
-        animate={{ opacity: textOpacity }}
+        animate={{ 
+          opacity: textOpacity,
+          x: titlePosition.x,
+          y: titlePosition.y
+        }}
         transition={{ duration: 0.3 }}
       >
         {poem.title}
