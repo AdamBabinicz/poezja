@@ -19,72 +19,58 @@ const realPoemTitles = [
   "Spacer", "Dobrze, że jesteś", "Zdziwienie"
 ];
 
-// TODO: Replace with real data from poetry.netlify.app scraping
-export const mockPoems: Poem[] = realPoemTitles.map((title, index) => {
-  const angle = (index / realPoemTitles.length) * 2 * Math.PI;
-  const radius = 120 + (index % 3) * 60;
-  const x = 400 + radius * Math.cos(angle) + (Math.random() - 0.5) * 40;
-  const y = 300 + radius * Math.sin(angle) + (Math.random() - 0.5) * 40;
-  
-  // Generate a slug for the ID
-  const id = title
-    .toLowerCase()
-    .replace(/[ąćęłńóśźż]/g, char => {
-      const map: { [key: string]: string } = { 'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z' };
-      return map[char] || char;
-    })
-    .replace(/[^a-z0-9]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+// Helper function to generate keywords (assuming this exists elsewhere or needs to be defined)
+const generateKeywordsForPoem = (title: string): string[] => {
+  // Placeholder for keyword generation logic
+  return title.toLowerCase().split(' ').slice(0, 3).concat(['poezja']);
+};
 
-  // Generate sample content based on title
-  const sampleContent = [
-    title,
-    "",
-    "W głębi myśli, gdzie słowa się rodzą,",
-    `Kryje się prawda o ${title.toLowerCase()}.`,
-    "Każdy wers to nowy świat,",
-    "Każde słowo to klucz do zrozumienia.",
-    "",
-    "Między liniami ukryte są znaczenia,",
-    "Które czekają na odkrycie,",
-    "W ciszy poezji, w rytmie wersów,",
-    "Odnajdujemy siebie."
-  ];
+// Helper function to generate connections (assuming this exists elsewhere or needs to be defined)
+const generateConnections = (index: number, total: number): string[] => {
+  // Placeholder for connection generation logic
+  const connections = [];
+  if (index > 0) connections.push(`poem-${index}`);
+  if (index < total - 1) connections.push(`poem-${index + 2}`);
+  return connections.slice(0, 2);
+};
 
-  // Generate keywords from title
-  const keywords = title
-    .toLowerCase()
-    .split(/[\s,]+/)
-    .filter(word => word.length > 2)
-    .slice(0, 3)
-    .concat(['poezja', 'myśl', 'słowo']);
 
-  // Generate connections to nearby poems
-  const connections = realPoemTitles
-    .slice(Math.max(0, index - 2), index)
-    .concat(realPoemTitles.slice(index + 1, Math.min(realPoemTitles.length, index + 3)))
-    .slice(0, 2)
-    .map(title => title
-      .toLowerCase()
-      .replace(/[ąćęłńóśźż]/g, char => {
-        const map: { [key: string]: string } = { 'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z' };
-        return map[char] || char;
-      })
-      .replace(/[^a-z0-9]/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, ''));
+// Generate positions spread evenly across the screen
+const generateNodePositions = (): Poem[] => {
+  return realPoemTitles.map((title, index) => {
+    // Create a more spread out grid-like pattern with organic variation
+    const cols = Math.ceil(Math.sqrt(realPoemTitles.length * 1.2)); // Slightly wider grid
+    const rows = Math.ceil(realPoemTitles.length / cols);
 
-  return {
-    id,
-    title,
-    content: sampleContent,
-    imageSrc: `/images/placeholder-${index + 1}.jpg`,
-    keywords,
-    position: { x, y },
-    connections
-  };
-});
+    const col = index % cols;
+    const row = Math.floor(index / cols);
+
+    // Base grid positions
+    const baseX = 100 + (col * (600 / (cols - 1 || 1)));
+    const baseY = 80 + (row * (440 / (rows - 1 || 1)));
+
+    // Add organic variation
+    const variation = 40;
+    const x = baseX + (Math.random() * variation - variation/2);
+    const y = baseY + (Math.random() * variation - variation/2);
+
+    return {
+      id: `poem-${index + 1}`,
+      title,
+      position: { 
+        x: Math.max(80, Math.min(720, x)), // Keep within bounds with padding
+        y: Math.max(60, Math.min(540, y))
+      },
+      content: `This is the full text of the poem "${title}". It explores themes of...`,
+      keywords: generateKeywordsForPoem(title),
+      connections: generateConnections(index, realPoemTitles.length),
+      createdAt: new Date().toISOString()
+    };
+  });
+};
+
+export const mockPoems: Poem[] = generateNodePositions();
+
 
 export const authorInfo = {
   name: "Neuralny Poeta",
@@ -92,7 +78,7 @@ export const authorInfo = {
   bio: `Twórca poezji neurologicznej, badacz granic ludzkiej percepcji. 
   Jego utwory powstają na przecięciu nauki i sztuki, 
   tworząc nowy język opisywania ludzkiego doświadczenia.
-  
+
   Kontrowersyjny z natury, prowokujący do myślenia,
   poszukujący prawdy w najmroczniejszych zakątkach umysłu.`
 };

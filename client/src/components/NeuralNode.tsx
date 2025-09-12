@@ -25,8 +25,12 @@ export default function NeuralNode({
   const nodeSize = Math.max(8, Math.min(24, 12 * scale));
   const textOpacity = scale > 0.6 ? 1 : 0;
   
-  // Calculate optimal title position to avoid overlaps
-  const titlePosition = calculateOptimalTitlePosition(poem, allPoems, nodeSize);
+  // Position title directly next to the node
+  const titlePosition = {
+    x: poem.position.x,
+    y: poem.position.y - nodeSize - 8,
+    anchor: 'middle' as const
+  };
 
   return (
     <motion.g
@@ -100,9 +104,7 @@ export default function NeuralNode({
         className="font-serif text-xs fill-foreground pointer-events-none"
         opacity={textOpacity}
         animate={{ 
-          opacity: textOpacity,
-          x: titlePosition.x,
-          y: titlePosition.y
+          opacity: textOpacity
         }}
         transition={{ duration: 0.3 }}
       >
