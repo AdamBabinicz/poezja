@@ -91,7 +91,7 @@ export default function PoemModal({
 
                 {/* Poem text with animation */}
                 <div className="prose prose-lg dark:prose-invert max-w-none">
-                  {poem.content.split('\n').map((line, index) => (
+                  {poem.content.map((line, index) => (
                     <motion.p
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
@@ -100,9 +100,11 @@ export default function PoemModal({
                         delay: 0.3 + index * 0.1,
                         duration: 0.6 
                       }}
-                      className="text-lg leading-relaxed mb-4 text-foreground font-serif"
+                      className={`text-lg leading-relaxed font-serif text-foreground ${
+                        line === '' ? 'mb-2 h-2' : 'mb-4'
+                      }`}
                     >
-                      {line}
+                      {line || '\u00A0'}
                     </motion.p>
                   ))}
                 </div>
