@@ -8,88 +8,79 @@ export interface Poem {
   connections: string[];
 }
 
-export const mockPoems: Poem[] = [
-  {
-    id: "kadlubek",
-    title: "Kadłubek",
-    content: `W ciemności nocy, gdy świat śpi,
-    Kadłubek myśli się przewija,
-    Przez umysł poety przepływa,
-    Jak rzeka przez kamieniste dno.
-    
-    Fragmenty wspomnień, urwane słowa,
-    Tworzą mozaikę znaczeń ukrytych,
-    W głębi świadomości zaklętych,
-    Czekają na odkrycie, na światło.`,
-    keywords: ["kadłubek", "ciemność", "myśli", "fragmenty", "świadomość"],
-    position: { x: 200, y: 150 },
-    connections: ["pustka", "metamorfoza"]
-  },
-  {
-    id: "pustka",
-    title: "Pustka",
-    content: `Pustka nie jest brakiem,
-    To przestrzeń dla nowego,
-    Miejsce, gdzie rodzi się
-    To, co jeszcze nie istnieje.
-    
-    W ciszy między słowami,
-    W oddechu między wersami,
-    Kryje się prawda,
-    Nieuchwytna i czysta.`,
-    keywords: ["pustka", "przestrzeń", "cisza", "prawda", "istnienie"],
-    position: { x: 400, y: 300 },
-    connections: ["kadlubek", "refleksje"]
-  },
-  {
-    id: "metamorfoza",
-    title: "Metamorfoza",
-    content: `Każdego dnia umieramy
-    I rodzą się nowe wersje nas,
-    Jak motyl z kokonu,
-    Wyłaniamy się inni.
-    
-    Słowa zmieniają znaczenie,
-    Myśli przybierają nowe formy,
-    A my, wieczni wędrowcy,
-    Idziemy ścieżką przemian.`,
-    keywords: ["metamorfoza", "przemiana", "śmierć", "narodziny", "motyl"],
-    position: { x: 100, y: 400 },
-    connections: ["kadlubek", "czas"]
-  },
-  {
-    id: "refleksje",
-    title: "Refleksje",
-    content: `W lustrze odbijają się
-    Nie twarze, lecz myśli,
-    Nie ciała, lecz dusze,
-    Szukające swojego miejsca.
-    
-    Każda refleksja to pytanie,
-    Każde pytanie to poszukiwanie,
-    A poszukiwanie to droga
-    Do prawdy o nas samych.`,
-    keywords: ["lustro", "odbicie", "myśli", "dusze", "poszukiwanie"],
-    position: { x: 500, y: 100 },
-    connections: ["pustka", "czas"]
-  },
-  {
-    id: "czas",
-    title: "Czas",
-    content: `Czas to nie rzeka,
-    To ocean bez brzegów,
-    Gdzie przeszłość i przyszłość
-    Spotykają się w teraźniejszości.
-    
-    Sekundy jak krople rosy,
-    Minuty jak fale na plaży,
-    Godziny jak chmury na niebie,
-    Przepływają przez nasze życie.`,
-    keywords: ["czas", "ocean", "przeszłość", "przyszłość", "teraźniejszość"],
-    position: { x: 350, y: 450 },
-    connections: ["metamorfoza", "refleksje"]
-  }
+const realPoemTitles = [
+  "Moc", "Niespełnienie", "Obietnica", "Witryna", "Wiersz na czasy eschatyczne",
+  "My, Wszechświat", "Apokalipsa według Adama", "Marzenie", "Kadłubek", "Uczucie",
+  "Szal", "Chłopiec z basenu", "Dłoń", "Miara Wszechrzeczy", "Poeci są wśród nas",
+  "Zlecenie od Pana Boga", "Droga", "Nagroda", "Piętno", "Pytanie",
+  "Dziadek do orzechów", "Rozrzutność", "Przyszłość", "Nagroda i kara", "Światy",
+  "Wiersz nostalgiczny", "Pamięć", "Głos", "Dylemat", "Tajemnica",
+  "Spacer", "Dobrze, że jesteś", "Zdziwienie"
 ];
+
+// TODO: Replace with real data from poetry.netlify.app scraping
+export const mockPoems: Poem[] = realPoemTitles.map((title, index) => {
+  const angle = (index / realPoemTitles.length) * 2 * Math.PI;
+  const radius = 120 + (index % 3) * 60;
+  const x = 400 + radius * Math.cos(angle) + (Math.random() - 0.5) * 40;
+  const y = 300 + radius * Math.sin(angle) + (Math.random() - 0.5) * 40;
+  
+  // Generate a slug for the ID
+  const id = title
+    .toLowerCase()
+    .replace(/[ąćęłńóśźż]/g, char => {
+      const map: { [key: string]: string } = { 'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z' };
+      return map[char] || char;
+    })
+    .replace(/[^a-z0-9]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+
+  // Generate sample content based on title
+  const sampleContent = `${title}
+
+W głębi myśli, gdzie słowa się rodzą,
+Kryje się prawda o ${title.toLowerCase()}.
+Każdy wers to nowy świat,
+Każde słowo to klucz do zrozumienia.
+
+Między liniami ukryte są znaczenia,
+Które czekają na odkrycie,
+W ciszy poezji, w rytmie wersów,
+Odnajdujemy siebie.`;
+
+  // Generate keywords from title
+  const keywords = title
+    .toLowerCase()
+    .split(/[\s,]+/)
+    .filter(word => word.length > 2)
+    .slice(0, 3)
+    .concat(['poezja', 'myśl', 'słowo']);
+
+  // Generate connections to nearby poems
+  const connections = realPoemTitles
+    .slice(Math.max(0, index - 2), index)
+    .concat(realPoemTitles.slice(index + 1, Math.min(realPoemTitles.length, index + 3)))
+    .slice(0, 2)
+    .map(title => title
+      .toLowerCase()
+      .replace(/[ąćęłńóśźż]/g, char => {
+        const map: { [key: string]: string } = { 'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z' };
+        return map[char] || char;
+      })
+      .replace(/[^a-z0-9]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, ''));
+
+  return {
+    id,
+    title,
+    content: sampleContent,
+    keywords,
+    position: { x, y },
+    connections
+  };
+});
 
 export const authorInfo = {
   name: "Neuralny Poeta",
