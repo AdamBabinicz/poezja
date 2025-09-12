@@ -39,26 +39,26 @@ const generateConnections = (index: number, total: number): string[] => {
 const generateNodePositions = (): Poem[] => {
   const totalPoems = realPoemTitles.length;
   const positions: Array<{ x: number; y: number }> = [];
-  
+
   // Canvas dimensions with padding
   const canvasWidth = 800;
   const canvasHeight = 600;
   const padding = 100;
   const workingWidth = canvasWidth - (padding * 2);
   const workingHeight = canvasHeight - (padding * 2);
-  
+
   // Minimum distance between nodes (including space for titles)
   const minDistance = 120; // Increased from ~60 to ensure title spacing
-  
+
   // Use a spiral distribution pattern for better space utilization
   const generateSpiralPositions = () => {
     const center = { x: canvasWidth / 2, y: canvasHeight / 2 };
     const positions: Array<{ x: number; y: number }> = [];
-    
+
     for (let i = 0; i < totalPoems; i++) {
       let attempts = 0;
       let position: { x: number; y: number };
-      
+
       do {
         if (i === 0) {
           // First node at center
@@ -68,44 +68,44 @@ const generateNodePositions = (): Poem[] => {
           const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // Golden angle in radians
           const radius = Math.sqrt(i) * 25; // Increased spacing multiplier
           const angle = i * goldenAngle;
-          
+
           position = {
             x: center.x + radius * Math.cos(angle) + (Math.random() - 0.5) * 30,
             y: center.y + radius * Math.sin(angle) + (Math.random() - 0.5) * 30
           };
-          
+
           // Ensure position is within bounds
           position.x = Math.max(padding, Math.min(canvasWidth - padding, position.x));
           position.y = Math.max(padding, Math.min(canvasHeight - padding, position.y));
         }
-        
+
         // Check if this position is far enough from existing positions
         const tooClose = positions.some(existing => {
           const distance = Math.sqrt(
-            Math.pow(position.x - existing.x, 2) + 
+            Math.pow(position.x - existing.x, 2) +
             Math.pow(position.y - existing.y, 2)
           );
           return distance < minDistance;
         });
-        
+
         if (!tooClose || attempts > 50) {
           break;
         }
-        
+
         attempts++;
       } while (attempts <= 50);
-      
+
       positions.push(position);
     }
-    
+
     return positions;
   };
-  
+
   const spiralPositions = generateSpiralPositions();
-  
+
   return realPoemTitles.map((title, index) => {
     const position = spiralPositions[index] || { x: 400, y: 300 };
-    
+
     return {
       id: `poem-${index + 1}`,
       title,
@@ -123,11 +123,6 @@ export const mockPoems: Poem[] = generateNodePositions();
 
 export const authorInfo = {
   name: "Neuralny Poeta",
-  description: "Kontrowersyjny autor eksplorujący granice między świadomością a podświadomością, między słowem a myślą. Jego poezja to mapa neuronowych połączeń, gdzie każdy wiersz to węzeł w sieci znaczeń.",
-  bio: `Twórca poezji neurologicznej, badacz granic ludzkiej percepcji. 
-  Jego utwory powstają na przecięciu nauki i sztuki, 
-  tworząc nowy język opisywania ludzkiego doświadczenia.
-
-  Kontrowersyjny z natury, prowokujący do myślenia,
-  poszukujący prawdy w najmroczniejszych zakątkach umysłu.`
+  description: "Autor urodził się dokładnie 100 lat później, niż Nikola Tesla. Nie tytułuje się żadnym przedrostkiem. Nie ma wyuczonego zawodu. W swoim życiu był dekoratorem, roznosicielem mleka, twarożkarzem, obserwatorem meteo, szlifierzem, krawcem, kierownikiem marketu, sprzedawcą. Jako subiekt przez witrynę sklepową obserwował przechodzących ludzi. Wtedy zauważył, że są jak „na sznurkach\". Interesuje się kosmologią. Nie posiada dorobku; w żadnej dziedzinie nie osiągnął mistrzostwa. W życiu prywatnym - rozwiedziony.",
+  bio: ""
 };
