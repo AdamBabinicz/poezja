@@ -35,32 +35,81 @@ const generateConnections = (index: number, total: number): string[] => {
 };
 
 
-// Generate positions spread evenly across the screen
+// Generate positions with proper spacing to avoid overlaps
 const generateNodePositions = (): Poem[] => {
+  const totalPoems = realPoemTitles.length;
+  const positions: Array<{ x: number; y: number }> = [];
+  
+  // Canvas dimensions with padding
+  const canvasWidth = 800;
+  const canvasHeight = 600;
+  const padding = 100;
+  const workingWidth = canvasWidth - (padding * 2);
+  const workingHeight = canvasHeight - (padding * 2);
+  
+  // Minimum distance between nodes (including space for titles)
+  const minDistance = 120; // Increased from ~60 to ensure title spacing
+  
+  // Use a spiral distribution pattern for better space utilization
+  const generateSpiralPositions = () => {
+    const center = { x: canvasWidth / 2, y: canvasHeight / 2 };
+    const positions: Array<{ x: number; y: number }> = [];
+    
+    for (let i = 0; i < totalPoems; i++) {
+      let attempts = 0;
+      let position: { x: number; y: number };
+      
+      do {
+        if (i === 0) {
+          // First node at center
+          position = { x: center.x, y: center.y };
+        } else {
+          // Generate position using golden angle spiral
+          const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // Golden angle in radians
+          const radius = Math.sqrt(i) * 25; // Increased spacing multiplier
+          const angle = i * goldenAngle;
+          
+          position = {
+            x: center.x + radius * Math.cos(angle) + (Math.random() - 0.5) * 30,
+            y: center.y + radius * Math.sin(angle) + (Math.random() - 0.5) * 30
+          };
+          
+          // Ensure position is within bounds
+          position.x = Math.max(padding, Math.min(canvasWidth - padding, position.x));
+          position.y = Math.max(padding, Math.min(canvasHeight - padding, position.y));
+        }
+        
+        // Check if this position is far enough from existing positions
+        const tooClose = positions.some(existing => {
+          const distance = Math.sqrt(
+            Math.pow(position.x - existing.x, 2) + 
+            Math.pow(position.y - existing.y, 2)
+          );
+          return distance < minDistance;
+        });
+        
+        if (!tooClose || attempts > 50) {
+          break;
+        }
+        
+        attempts++;
+      } while (attempts <= 50);
+      
+      positions.push(position);
+    }
+    
+    return positions;
+  };
+  
+  const spiralPositions = generateSpiralPositions();
+  
   return realPoemTitles.map((title, index) => {
-    // Create a more spread out grid-like pattern with organic variation
-    const cols = Math.ceil(Math.sqrt(realPoemTitles.length * 1.2)); // Slightly wider grid
-    const rows = Math.ceil(realPoemTitles.length / cols);
-
-    const col = index % cols;
-    const row = Math.floor(index / cols);
-
-    // Base grid positions
-    const baseX = 100 + (col * (600 / (cols - 1 || 1)));
-    const baseY = 80 + (row * (440 / (rows - 1 || 1)));
-
-    // Add organic variation
-    const variation = 40;
-    const x = baseX + (Math.random() * variation - variation/2);
-    const y = baseY + (Math.random() * variation - variation/2);
-
+    const position = spiralPositions[index] || { x: 400, y: 300 };
+    
     return {
       id: `poem-${index + 1}`,
       title,
-      position: { 
-        x: Math.max(80, Math.min(720, x)), // Keep within bounds with padding
-        y: Math.max(60, Math.min(540, y))
-      },
+      position,
       content: `This is the full text of the poem "${title}". It explores themes of...`,
       keywords: generateKeywordsForPoem(title),
       connections: generateConnections(index, realPoemTitles.length),
