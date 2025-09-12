@@ -3,6 +3,7 @@ export interface Poem {
   id: string;
   title: string;
   content: string;
+  imageSrc: string;
   keywords: string[];
   position: { x: number; y: number };
   connections: string[];
@@ -76,6 +77,7 @@ Odnajdujemy siebie.`;
     id,
     title,
     content: sampleContent,
+    imageSrc: `/images/placeholder-${index + 1}.jpg`,
     keywords,
     position: { x, y },
     connections

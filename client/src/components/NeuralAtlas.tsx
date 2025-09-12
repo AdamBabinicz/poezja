@@ -5,7 +5,8 @@ import NeuralNode from './NeuralNode';
 import NeuralConnection from './NeuralConnection';
 import AtlasControls from './AtlasControls';
 import PoemModal from './PoemModal';
-import { mockPoems, type Poem } from '@/data/mockPoems';
+import { poems } from '@/data/poetryData';
+import type { Poem } from '@/data/mockPoems';
 
 // TODO: Remove mock functionality - replace with real data
 export default function NeuralAtlas() {
@@ -61,7 +62,7 @@ export default function NeuralAtlas() {
   }, []);
 
   const getConnectedPoems = useCallback((poemId: string) => {
-    const poem = mockPoems.find(p => p.id === poemId);
+    const poem = poems.find(p => p.id === poemId);
     return poem ? poem.connections : [];
   }, []);
 
@@ -137,9 +138,9 @@ export default function NeuralAtlas() {
             <rect width="100%" height="100%" fill="url(#grid)" />
 
             {/* Neural connections */}
-            {mockPoems.map(poem => 
+            {poems.map(poem => 
               poem.connections.map(connectionId => {
-                const connectedPoem = mockPoems.find(p => p.id === connectionId);
+                const connectedPoem = poems.find(p => p.id === connectionId);
                 if (!connectedPoem) return null;
                 
                 return (
@@ -155,7 +156,7 @@ export default function NeuralAtlas() {
             )}
 
             {/* Neural nodes */}
-            {mockPoems.map(poem => (
+            {poems.map(poem => (
               <NeuralNode
                 key={poem.id}
                 poem={poem}

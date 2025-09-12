@@ -42,10 +42,10 @@ export default function PoemModal({
           data-testid={`poem-modal-${poem.id}`}
         >
           {/* Background image with overlay */}
-          {backgroundImage && (
+          {poem.imageSrc && (
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-20"
-              style={{ backgroundImage: `url(${backgroundImage})` }}
+              style={{ backgroundImage: `url(${poem.imageSrc})` }}
             />
           )}
           
@@ -62,6 +62,20 @@ export default function PoemModal({
             >
               <X className="h-4 w-4" />
             </Button>
+
+            {/* Poem image section */}
+            {poem.imageSrc && (
+              <div className="lg:w-80 border-b lg:border-b-0 lg:border-r border-card-border">
+                <div className="h-64 lg:h-full">
+                  <img 
+                    src={poem.imageSrc} 
+                    alt={poem.title}
+                    className="w-full h-full object-cover"
+                    data-testid={`poem-image-${poem.id}`}
+                  />
+                </div>
+              </div>
+            )}
 
             {/* Poem content */}
             <div className="flex-1 p-6 lg:p-8 overflow-y-auto">
