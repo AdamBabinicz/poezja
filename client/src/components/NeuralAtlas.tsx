@@ -34,8 +34,9 @@ export default function NeuralAtlas() {
     setHighlightedKeyword(null);
   }, []);
 
-  const handlePoemClick = useCallback((poem: Poem) => {
-    setSelectedPoem(poem);
+  const handlePoemClick = useCallback((poemId: string) => {
+    const poem = poems.find(p => p.id === poemId);
+    setSelectedPoem(poem || null);
   }, []);
 
   const handleKeywordClick = useCallback((keyword: string) => {
@@ -46,7 +47,7 @@ export default function NeuralAtlas() {
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     // Only handle left mouse button
     if (e.button !== 0) return;
-    
+
     // Don't start dragging if clicking on a neural node
     const target = e.target as Element;
     if (target.closest('[data-neural-node]') || target.hasAttribute('data-neural-node')) {
@@ -83,7 +84,7 @@ export default function NeuralAtlas() {
       return poem.keywords.includes(highlightedKeyword);
     }
     if (hoveredPoem) {
-      return hoveredPoem.id === poem.id || 
+      return hoveredPoem.id === poem.id ||
              hoveredPoem.connections.includes(poem.id) ||
              poem.connections.includes(hoveredPoem.id);
     }
@@ -146,11 +147,11 @@ export default function NeuralAtlas() {
             <rect width="100%" height="100%" fill="url(#grid)" style={{ pointerEvents: 'none' }} />
 
             {/* Neural connections */}
-            {poems.map(poem => 
+            {poems.map(poem =>
               poem.connections.map(connectionId => {
                 const connectedPoem = poems.find(p => p.id === connectionId);
                 if (!connectedPoem) return null;
-                
+
                 return (
                   <NeuralConnection
                     key={`${poem.id}-${connectionId}`}
@@ -168,7 +169,7 @@ export default function NeuralAtlas() {
               <NeuralNode
                 key={poem.id}
                 poem={poem}
-                onClick={() => handlePoemClick(poem)}
+                onClick={() => handlePoemClick(poem.id)}
                 onHover={setHoveredPoem}
                 isHighlighted={isPoemHighlighted(poem)}
                 scale={scale}
