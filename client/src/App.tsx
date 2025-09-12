@@ -48,10 +48,10 @@ function MainApp() {
       {/* Author button */}
       <div className="fixed bottom-4 left-4 z-40">
         <Button
-          onClick={() => setShowAuthor(true)}
-          className="bg-card/80 backdrop-blur-md border border-card-border hover-elevate"
-          data-testid="button-show-author"
-        >
+    onClick={() => setShowAuthor(true)}
+    className="bg-blue-600 text-white hover:bg-blue-700 transition ease-in-out duration-200"
+    data-testid="button-show-author"
+  >
           <User className="h-4 w-4 mr-2" />
           {t('navigation.about')}
         </Button>
