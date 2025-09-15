@@ -37,7 +37,7 @@ function MainApp() {
     return <LoadingScreen />;
   }
 
-  const siteUrl = "https://wizjoner.netlify.app";
+  const siteUrl = "https://antypowabne.netlify.app";
 
   const schemaData = [
     {

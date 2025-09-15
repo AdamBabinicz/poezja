@@ -123,7 +123,7 @@ export default function SingularityModal({
     onClose();
   };
 
-  const siteUrl = "https://wizjoner.netlify.app";
+  const siteUrl = "https://antypowabne.netlify.app";
   const descriptionText = t(contentKeys.sections[0].paragraph);
 
   const schemaData = [

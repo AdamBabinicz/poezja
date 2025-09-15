@@ -34,7 +34,7 @@ export default function AuthorModal({
   const { t } = useTranslation();
 
   const bioText = t(author.bioKey);
-  const siteUrl = "https://wizjoner.netlify.app";
+  const siteUrl = "https://antypowabne.netlify.app";
 
   const schemaData = [
     {

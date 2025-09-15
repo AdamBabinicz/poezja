@@ -82,7 +82,7 @@ export default function PoemModal({
       : ""
   ).substring(0, 160);
 
-  const siteUrl = "https://wizjoner.netlify.app";
+  const siteUrl = "https://antypowabne.netlify.app";
 
   const schemaData = [
     {

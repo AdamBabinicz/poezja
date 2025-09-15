@@ -15,7 +15,7 @@ interface SEOHeadProps {
   schemaData?: SchemaObject[];
 }
 
-const siteUrl = "https://wizjoner.netlify.app";
+const siteUrl = "https://antypowabne.netlify.app";
 
 export function SEOHead({
   titleKey,
