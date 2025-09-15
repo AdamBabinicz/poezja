@@ -9,7 +9,6 @@ interface NeuralConnectionProps {
   opacity?: number;
 }
 
-// Definiujemy kolory jako stałe, aby uniknąć problemów z animacją
 const activeColor = "hsl(var(--neural-highlight))";
 const inactiveColor = "hsl(var(--neural-connection))";
 
@@ -17,7 +16,7 @@ export default function NeuralConnection({
   from,
   to,
   isActive,
-  opacity = 0.5, // Zwiększamy domyślną, minimalną przezroczystość
+  opacity = 0.5,
 }: NeuralConnectionProps) {
   const { t } = useTranslation();
 
@@ -36,12 +35,12 @@ export default function NeuralConnection({
                   ${to.position.x} ${to.position.y}`;
 
   return (
-    <g>
+    <g aria-hidden="true">
       <motion.path
         id={pathId}
         d={path}
         fill="none"
-        stroke={inactiveColor} // Ustawiamy kolor bazowy
+        stroke={inactiveColor}
         strokeDasharray="2,2"
         className="filter drop-shadow-sm"
         style={{ pointerEvents: "none" }}
@@ -56,7 +55,6 @@ export default function NeuralConnection({
           pathLength: { duration: 1.5, ease: "easeInOut" },
           default: { duration: 0.3 },
         }}
-        aria-label={t("accessibility.connection")}
       />
 
       <motion.circle
