@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist/public"
+
+# Wymuszenie Node 22
+[build.environment]
+  NODE_VERSION = "22"
+
+# Przekierowania SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Nagłówki ogólne
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Vary = "Accept-Encoding"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+  Content-Type = "text/html; charset=utf-8"
