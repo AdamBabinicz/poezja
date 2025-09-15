@@ -88,8 +88,12 @@ export default function NeuralNode({
       onFocus={handleFocus}
       onBlur={() => onHover(null)}
       onKeyDown={handleKeyDown}
+      onClick={onClick}
       tabIndex={0}
-      className="focus-visible:outline-none"
+      role="button"
+      aria-label={t("accessibility.neuralNode", { title: t(poem.titleKey) })}
+      className="focus-visible:outline-none cursor-pointer"
+      data-testid={`neural-node-${poem.id}`}
     >
       <motion.circle
         cx={poem.position.x}
@@ -98,16 +102,13 @@ export default function NeuralNode({
         fill={nodeColors.base}
         stroke={nodeColors.stroke}
         strokeWidth={isHighlighted ? 2 : 1}
-        className="cursor-pointer hover-elevate"
-        onClick={onClick}
+        className="hover-elevate"
         initial={{ r: nodeSize }}
         animate={{
           r: isHighlighted ? nodeSize * 1.2 : nodeSize,
           fill: isHighlighted ? nodeColors.hover : nodeColors.base,
         }}
         transition={{ duration: 0.3 }}
-        aria-label={t("accessibility.neuralNode", { title: t(poem.titleKey) })}
-        data-testid={`neural-node-${poem.id}`}
       />
 
       {!isSpecialNode && (
