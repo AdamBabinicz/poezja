@@ -52,8 +52,8 @@ export default function AtlasControls({
   const currentLanguageCode = i18n.language.split("-")[0];
 
   return (
-    <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
-      <div className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg p-2 flex flex-col gap-1">
+    <div className="fixed z-50 flex gap-2 bottom-4 left-1/2 -translate-x-1/2 md:top-4 md:right-4 md:left-auto md:transform-none md:flex-col">
+      <div className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg p-2 flex flex-row gap-1 md:flex-col">
         <Button
           size="icon"
           variant="ghost"
@@ -90,7 +90,7 @@ export default function AtlasControls({
         </Button>
       </div>
 
-      <div className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg p-2 flex flex-col gap-1">
+      <div className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg p-2 flex flex-row gap-1 md:flex-col">
         <Button
           size="icon"
           variant="ghost"
