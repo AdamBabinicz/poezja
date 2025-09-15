@@ -1,78 +1,108 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Redirect, useRoute } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { HelmetProvider } from 'react-helmet-async';
-import { useState, useEffect } from 'react';
+import { HelmetProvider } from "react-helmet-async";
+import { useState, useEffect, Suspense } from "react";
 import NeuralAtlas from "@/components/NeuralAtlas";
-import AuthorModal from "@/components/AuthorModal";
 import LoadingScreen from "@/components/LoadingScreen";
-import { Button } from "@/components/ui/button";
-import { User } from "lucide-react";
-import { useTranslation } from 'react-i18next';
-import './lib/i18n';
-import backgroundImage from '@assets/generated_images/Neural_network_background_visualization_6faa9190.png';
-import authorImage from '@assets/generated_images/Abstract_author_portrait_aaf38ae2.png';
+import { SoundProvider } from "@/contexts/SoundContext";
+import "./lib/i18n";
+import { useTranslation } from "react-i18next";
+import backgroundImage from "@assets/generated_images/Neural_network_background_visualization_6faa9190.png";
+import authorImage from "@assets/generated_images/Abstract_author_portrait_aaf38ae2.png";
+import { SEOHead } from "./components/SEOHead";
 
 function MainApp() {
-  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
-  const [showAuthor, setShowAuthor] = useState(false);
+  const { i18n, t } = useTranslation();
+  const [, params] = useRoute("/:lang");
+  const lang = params?.lang || "pl";
 
   useEffect(() => {
-    // Simulate neural network initialization
+    if (i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [lang, i18n]);
 
   if (isLoading) {
     return <LoadingScreen />;
   }
 
-  return (
-    <div className="relative">
-      {/* Background neural texture */}
-      <div 
-        className="fixed inset-0 opacity-10 bg-cover bg-center"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      />
-      
-      {/* Main atlas view */}
-      <NeuralAtlas />
-      
-      {/* Author button */}
-      <div className="fixed bottom-4 left-4 z-40">
-        <Button
-    onClick={() => setShowAuthor(true)}
-    className="bg-[hsl(180,60%,70%)] text-white hover:bg-[hsl(200,80%,65%)] transition ease-in-out duration-200"
-    data-testid="button-show-author"
-  >
-          <User className="h-4 w-4 mr-2" />
-          {t('navigation.about')}
-        </Button>
-      </div>
+  const siteUrl = "https://wizjoner.netlify.app";
 
-      {/* Author modal */}
-      <AuthorModal
-        isOpen={showAuthor}
-        onClose={() => setShowAuthor(false)}
-        authorImage={authorImage}
+  const schemaData = [
+    {
+      type: "Organization" as const,
+      data: {
+        name: t("seo.siteName"),
+        url: siteUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/logo.png`,
+        },
+        description: t("seo.defaultDescription"),
+      },
+    },
+    {
+      type: "Person" as const,
+      data: {
+        name: "Adam Gierczak",
+        url: siteUrl,
+        sameAs: [
+          "https://github.com/AdamBabinicz",
+          "https://x.com/AdamBabinicz",
+          "https://www.facebook.com/adam.gierczak.334",
+        ],
+      },
+    },
+  ];
+
+  return (
+    <>
+      <SEOHead
+        isHomePage={true}
+        titleKey="seo.homeTitle"
+        descriptionKey="seo.defaultDescription"
+        schemaData={schemaData}
       />
-    </div>
+      <div className="relative">
+        <div
+          className="fixed inset-0 opacity-10 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <NeuralAtlas authorImage={authorImage} />
+      </div>
+    </>
   );
 }
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={MainApp} />
-      <Route path="/:lang" component={MainApp} />
-      <Route component={() => <div className="min-h-screen bg-background flex items-center justify-center text-foreground">404 - Page not found</div>} />
+      <Route path="/">
+        <Redirect to="/pl" />
+      </Route>
+      <Route path="/:lang">
+        <Suspense fallback={<LoadingScreen />}>
+          <MainApp />
+        </Suspense>
+      </Route>
+      <Route
+        component={() => (
+          <div className="min-h-screen bg-background flex items-center justify-center text-foreground">
+            404 - Page not found
+          </div>
+        )}
+      />
     </Switch>
   );
 }
@@ -81,12 +111,14 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
-        </ThemeProvider>
+        <SoundProvider>
+          <ThemeProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </ThemeProvider>
+        </SoundProvider>
       </QueryClientProvider>
     </HelmetProvider>
   );

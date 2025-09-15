@@ -1,662 +1,311 @@
 {
   "poems": [
     {
-      "id": "moc",
-      "title": "Moc",
-      "content": [
-        "Neutrina mocy przeszyły wstępujące ciało",
-        "Mocarze zebrali się na górze",
-        "Ich im iona m, a i s",
-        "Każdy z nich niepokonany",
-        "kłania się śmierci",
-        "W dębowych ławkach zaklęta wiara",
-        "W nich twarze spijające ostatnie krople",
-        "przed suszą",
-        "Nie wystarczy dla wszystkich",
-        "Łaknący odeszli spragnieni."
-      ],
-      "imageSrc": "/images/moc.jpg",
-      "keywords": [
-        "moc",
-        "neutrina",
-        "mocarze",
-        "wiara"
-      ],
-      "position": {
-        "x": 520,
-        "y": 300
-      },
-      "connections": [
-        "niespelnienie",
-        "obietnica"
-      ]
-    },
-    {
-      "id": "niespelnienie",
-      "title": "Niespełnienie",
-      "content": [
-        "Chodnikami snują się ludzkie automaty",
-        "Nie wiedzą, że są na sznurkach",
-        "Zaglądam w czeluść nieskończonego piekła",
-        "Rozmawiałem wczoraj z Aniołem",
-        "Był zdenerwowany",
-        "Pieczołowicie układam plastry czasu",
-        "Widzę co było i co będzie",
-        "Aniołowi się to nie podobało"
-      ],
-      "imageSrc": "/images/placeholder-2.jpg",
-      "keywords": [
-        "niespełnienie",
-        "tęsknota",
-        "pragnienie"
-      ],
-      "position": {
-        "x": 460,
-        "y": 180
-      },
-      "connections": [
-        "moc",
-        "obietnica"
-      ]
-    },
-    {
-      "id": "obietnica",
-      "title": "Obietnica",
-      "content": [],
-      "imageSrc": "/images/placeholder-3.jpg",
-      "keywords": [
-        "obietnica",
-        "nadzieja",
-        "przyszłość"
-      ],
-      "position": {
-        "x": 380,
-        "y": 220
-      },
-      "connections": [
-        "moc",
-        "niespelnienie"
-      ]
-    },
-    {
       "id": "witryna",
-      "title": "Witryna",
-      "content": [],
-      "imageSrc": "/images/placeholder-4.jpg",
-      "keywords": [
-        "witryna",
-        "szkło",
-        "odbicie"
-      ],
-      "position": {
-        "x": 300,
-        "y": 280
-      },
-      "connections": [
-        "obietnica",
-        "wiersz-na-czasy-eschatyczne"
-      ]
-    },
-    {
-      "id": "wiersz-na-czasy-eschatyczne",
-      "title": "Wiersz na czasy eschatyczne",
-      "content": [],
-      "imageSrc": "/images/placeholder-5.jpg",
-      "keywords": [
-        "eschatologia",
-        "koniec",
-        "przepowiednia"
-      ],
-      "position": {
-        "x": 240,
-        "y": 360
-      },
-      "connections": [
-        "witryna",
-        "my-wszechswiat"
-      ]
-    },
-    {
-      "id": "my-wszechswiat",
-      "title": "My, Wszechświat",
-      "content": [],
-      "imageSrc": "/images/placeholder-6.jpg",
-      "keywords": [
-        "wszechświat",
-        "kosmologia",
-        "człowiek"
-      ],
-      "position": {
-        "x": 220,
-        "y": 440
-      },
-      "connections": [
-        "wiersz-na-czasy-eschatyczne",
-        "apokalipsa-wedlug-adama"
-      ]
-    },
-    {
-      "id": "apokalipsa-wedlug-adama",
-      "title": "Apokalipsa według Adama",
-      "content": [],
-      "imageSrc": "/images/placeholder-7.jpg",
-      "keywords": [
-        "apokalipsa",
-        "Adam",
-        "stworzenie"
-      ],
-      "position": {
-        "x": 240,
-        "y": 520
-      },
-      "connections": [
-        "my-wszechswiat",
-        "marzenie"
-      ]
-    },
-    {
-      "id": "marzenie",
-      "title": "Marzenie",
-      "content": [],
-      "imageSrc": "/images/placeholder-8.jpg",
-      "keywords": [
-        "marzenie",
-        "sen",
-        "wyobraźnia"
-      ],
-      "position": {
-        "x": 300,
-        "y": 580
-      },
-      "connections": [
-        "apokalipsa-wedlug-adama",
-        "kadlubek"
-      ]
-    },
-    {
-      "id": "kadlubek",
-      "title": "Kadłubek",
-      "content": [],
-      "imageSrc": "/images/placeholder-9.jpg",
-      "keywords": [
-        "kadłubek",
-        "forma",
-        "struktura"
-      ],
-      "position": {
-        "x": 380,
-        "y": 600
-      },
-      "connections": [
-        "marzenie",
-        "uczucie"
-      ]
-    },
-    {
-      "id": "uczucie",
-      "title": "Uczucie",
-      "content": [],
-      "imageSrc": "/images/placeholder-10.jpg",
-      "keywords": [
-        "uczucie",
-        "emocja",
-        "serce"
-      ],
-      "position": {
-        "x": 460,
-        "y": 580
-      },
-      "connections": [
-        "kadlubek",
-        "szal"
-      ]
-    },
-    {
-      "id": "szal",
-      "title": "Szał",
-      "content": [],
-      "imageSrc": "/images/placeholder-11.jpg",
-      "keywords": [
-        "szał",
-        "ekstaza",
-        "uniesienie"
-      ],
-      "position": {
-        "x": 520,
-        "y": 520
-      },
-      "connections": [
-        "uczucie",
-        "chlopiec-z-basenu"
-      ]
-    },
-    {
-      "id": "chlopiec-z-basenu",
-      "title": "Chłopiec z basenu",
-      "content": [],
-      "imageSrc": "/images/placeholder-12.jpg",
-      "keywords": [
-        "chłopiec",
-        "basen",
-        "woda"
-      ],
-      "position": {
-        "x": 560,
-        "y": 440
-      },
-      "connections": [
-        "szal",
-        "dlon"
-      ]
-    },
-    {
-      "id": "dlon",
-      "title": "Dłoń",
-      "content": [],
-      "imageSrc": "/images/placeholder-13.jpg",
-      "keywords": [
-        "dłoń",
-        "dotyk",
-        "gest"
-      ],
-      "position": {
-        "x": 580,
-        "y": 360
-      },
-      "connections": [
-        "chlopiec-z-basenu",
-        "miara-wszechrzeczy"
-      ]
-    },
-    {
-      "id": "miara-wszechrzeczy",
-      "title": "Miara Wszechrzeczy",
-      "content": [],
-      "imageSrc": "/images/placeholder-14.jpg",
-      "keywords": [
-        "miara",
-        "wszechrzeczy",
-        "wymiar"
-      ],
-      "position": {
-        "x": 560,
-        "y": 280
-      },
-      "connections": [
-        "dlon",
-        "poeci-sa-wsrod-nas"
-      ]
-    },
-    {
-      "id": "poeci-sa-wsrod-nas",
-      "title": "Poeci są wśród nas",
-      "content": [],
-      "imageSrc": "/images/placeholder-15.jpg",
-      "keywords": [
-        "poeci",
-        "poezja",
-        "społeczeństwo"
-      ],
-      "position": {
-        "x": 520,
-        "y": 200
-      },
-      "connections": [
-        "miara-wszechrzeczy",
-        "zlecenie-od-pana-boga"
-      ]
-    },
-    {
-      "id": "zlecenie-od-pana-boga",
-      "title": "Zlecenie od Pana Boga",
-      "content": [],
-      "imageSrc": "/images/placeholder-16.jpg",
-      "keywords": [
-        "zlecenie",
-        "Bóg",
-        "misja"
-      ],
-      "position": {
-        "x": 460,
-        "y": 140
-      },
-      "connections": [
-        "poeci-sa-wsrod-nas",
-        "droga"
-      ]
-    },
-    {
-      "id": "droga",
-      "title": "Droga",
-      "content": [],
-      "imageSrc": "/images/placeholder-17.jpg",
-      "keywords": [
-        "droga",
-        "ścieżka",
-        "podróż"
-      ],
-      "position": {
-        "x": 380,
-        "y": 120
-      },
-      "connections": [
-        "zlecenie-od-pana-boga",
-        "nagroda"
-      ]
-    },
-    {
-      "id": "nagroda",
-      "title": "Nagroda",
-      "content": [],
-      "imageSrc": "/images/placeholder-18.jpg",
-      "keywords": [
-        "nagroda",
-        "osiągnięcie",
-        "cel"
-      ],
-      "position": {
-        "x": 300,
-        "y": 140
-      },
-      "connections": [
-        "droga",
-        "pietno"
-      ]
-    },
-    {
-      "id": "pietno",
-      "title": "Piętno",
-      "content": [],
-      "imageSrc": "/images/placeholder-19.jpg",
-      "keywords": [
-        "piętno",
-        "znak",
-        "stygmat"
-      ],
-      "position": {
-        "x": 240,
-        "y": 200
-      },
-      "connections": [
-        "nagroda",
-        "pytanie"
-      ]
-    },
-    {
-      "id": "pytanie",
-      "title": "Pytanie",
-      "content": [],
-      "imageSrc": "/images/placeholder-20.jpg",
-      "keywords": [
-        "pytanie",
-        "wątpliwość",
-        "poszukiwanie"
-      ],
-      "position": {
-        "x": 220,
-        "y": 280
-      },
-      "connections": [
-        "pietno",
-        "dziadek-do-orzechow"
-      ]
-    },
-    {
-      "id": "dziadek-do-orzechow",
-      "title": "Dziadek do orzechów",
-      "content": [],
-      "imageSrc": "/images/placeholder-21.jpg",
-      "keywords": [
-        "dziadek",
-        "orzechy",
-        "bajka"
-      ],
-      "position": {
-        "x": 200,
-        "y": 360
-      },
-      "connections": [
-        "pytanie",
-        "rozrzutnosc"
-      ]
+      "titleKey": "poems.witryna_title",
+      "contentKey": "poems.witryna_content",
+      "imageSrc": "/images/witryna.png",
+      "keywords": ["people", "time", "angel", "hell"],
+      "connections": ["dylemat", "pietno"],
+      "position": { "x": 100, "y": 100 }
     },
     {
       "id": "rozrzutnosc",
-      "title": "Rozrzutność",
-      "content": [],
-      "imageSrc": "/images/placeholder-22.jpg",
-      "keywords": [
-        "rozrzutność",
-        "marnotrawstwo",
-        "hojność"
-      ],
-      "position": {
-        "x": 220,
-        "y": 440
-      },
-      "connections": [
-        "dziadek-do-orzechow",
-        "przyszlosc"
-      ]
-    },
-    {
-      "id": "przyszlosc",
-      "title": "Przyszłość",
-      "content": [],
-      "imageSrc": "/images/placeholder-23.jpg",
-      "keywords": [
-        "przyszłość",
-        "czas",
-        "nadzieja"
-      ],
-      "position": {
-        "x": 260,
-        "y": 520
-      },
-      "connections": [
-        "rozrzutnosc",
-        "nagroda-i-kara"
-      ]
-    },
-    {
-      "id": "nagroda-i-kara",
-      "title": "Nagroda i kara",
-      "content": [],
-      "imageSrc": "/images/placeholder-24.jpg",
-      "keywords": [
-        "nagroda",
-        "kara",
-        "sprawiedliwość"
-      ],
-      "position": {
-        "x": 320,
-        "y": 580
-      },
-      "connections": [
-        "przyszlosc",
-        "swiaty"
-      ]
-    },
-    {
-      "id": "swiaty",
-      "title": "Światy",
-      "content": [],
-      "imageSrc": "/images/placeholder-25.jpg",
-      "keywords": [
-        "światy",
-        "wymiary",
-        "rzeczywistość"
-      ],
-      "position": {
-        "x": 400,
-        "y": 600
-      },
-      "connections": [
-        "nagroda-i-kara",
-        "wiersz-nostalgiczny"
-      ]
-    },
-    {
-      "id": "wiersz-nostalgiczny",
-      "title": "Wiersz nostalgiczny",
-      "content": [],
-      "imageSrc": "/images/placeholder-26.jpg",
-      "keywords": [
-        "nostalgia",
-        "przeszłość",
-        "wspomnienie"
-      ],
-      "position": {
-        "x": 480,
-        "y": 580
-      },
-      "connections": [
-        "swiaty",
-        "pamiec"
-      ]
-    },
-    {
-      "id": "pamiec",
-      "title": "Pamięć",
-      "content": [],
-      "imageSrc": "/images/placeholder-27.jpg",
-      "keywords": [
-        "pamięć",
-        "wspomnienie",
-        "przeszłość"
-      ],
-      "position": {
-        "x": 540,
-        "y": 520
-      },
-      "connections": [
-        "wiersz-nostalgiczny",
-        "glos"
-      ]
+      "titleKey": "poems.rozrzutnosc_title",
+      "contentKey": "poems.rozrzutnosc_content",
+      "imageSrc": "/images/1.jpg",
+      "keywords": ["non_existence", "god", "birth", "people"],
+      "connections": ["przyszlosc", "swiaty"],
+      "position": { "x": 700, "y": 80 }
     },
     {
       "id": "glos",
-      "title": "Głos",
-      "content": [],
-      "imageSrc": "/images/placeholder-28.jpg",
-      "keywords": [
-        "głos",
-        "dźwięk",
-        "komunikacja"
-      ],
-      "position": {
-        "x": 580,
-        "y": 440
-      },
-      "connections": [
-        "pamiec",
-        "dylemat"
-      ]
+      "titleKey": "poems.glos_title",
+      "contentKey": "poems.glos_content",
+      "imageSrc": "/images/glos.png",
+      "keywords": ["thought", "body", "words", "imperfection"],
+      "connections": ["kadlubek", "dlon"],
+      "position": { "x": 250, "y": 450 }
+    },
+    {
+      "id": "dziadek-do-orzechow",
+      "titleKey": "poems.dziadek-do-orzechow_title",
+      "contentKey": "poems.dziadek-do-orzechow_content",
+      "imageSrc": "/images/dziadek.png",
+      "keywords": ["reality", "tragedy", "world", "dance"],
+      "connections": ["zdziwienie", "chlopiec-z-basenu"],
+      "position": { "x": 50, "y": 250 }
     },
     {
       "id": "dylemat",
-      "title": "Dylemat",
-      "content": [],
-      "imageSrc": "/images/placeholder-29.jpg",
-      "keywords": [
-        "dylemat",
-        "wybór",
-        "wątpliwość"
-      ],
-      "position": {
-        "x": 600,
-        "y": 360
-      },
-      "connections": [
-        "glos",
-        "tajemnica"
-      ]
-    },
-    {
-      "id": "tajemnica",
-      "title": "Tajemnica",
-      "content": [],
-      "imageSrc": "/images/placeholder-30.jpg",
-      "keywords": [
-        "tajemnica",
-        "sekret",
-        "ukrycie"
-      ],
-      "position": {
-        "x": 580,
-        "y": 280
-      },
-      "connections": [
-        "dylemat",
-        "spacer"
-      ]
-    },
-    {
-      "id": "spacer",
-      "title": "Spacer",
-      "content": [],
-      "imageSrc": "/images/placeholder-31.jpg",
-      "keywords": [
-        "spacer",
-        "wędrówka",
-        "ruch"
-      ],
-      "position": {
-        "x": 540,
-        "y": 200
-      },
-      "connections": [
-        "tajemnica",
-        "dobrze-ze-jestes"
-      ]
-    },
-    {
-      "id": "dobrze-ze-jestes",
-      "title": "Dobrze, że jesteś",
-      "content": [],
-      "imageSrc": "/images/placeholder-32.jpg",
-      "keywords": [
-        "obecność",
-        "wdzięczność",
-        "istnienie"
-      ],
-      "position": {
-        "x": 480,
-        "y": 140
-      },
-      "connections": [
-        "spacer",
-        "zdziwienie"
-      ]
+      "titleKey": "poems.dylemat_title",
+      "contentKey": "poems.dylemat_content",
+      "imageSrc": "/images/dylemat.png",
+      "keywords": ["soul", "body", "life", "end"],
+      "connections": ["witryna", "niespelnienie"],
+      "position": { "x": 180, "y": 150 }
     },
     {
       "id": "zdziwienie",
-      "title": "Zdziwienie",
-      "content": [],
-      "imageSrc": "/images/placeholder-33.jpg",
-      "keywords": [
-        "zdziwienie",
-        "zaskoczenie",
-        "cud"
-      ],
-      "position": {
-        "x": 400,
-        "y": 120
-      },
-      "connections": [
-        "dobrze-ze-jestes",
-        "moc"
-      ]
+      "titleKey": "poems.zdziwienie_title",
+      "contentKey": "poems.zdziwienie_content",
+      "imageSrc": "/images/zdziwienie.png",
+      "keywords": ["astonishment", "word", "star", "closeness"],
+      "connections": ["dziadek-do-orzechow", "dlon"],
+      "position": { "x": 120, "y": 320 }
+    },
+    {
+      "id": "kadlubek",
+      "titleKey": "poems.kadlubek_title",
+      "contentKey": "poems.kadlubek_content",
+      "imageSrc": "/images/kadlubek.png",
+      "keywords": ["torso", "emptiness", "love", "life"],
+      "connections": ["glos", "uczucie"],
+      "position": { "x": 350, "y": 500 }
+    },
+    {
+      "id": "niespelnienie",
+      "titleKey": "poems.niespelnienie_title",
+      "contentKey": "poems.niespelnienie_content",
+      "imageSrc": "/images/niespelnienie.png",
+      "keywords": ["nothingness", "body", "power", "end"],
+      "connections": ["dylemat", "moc"],
+      "position": { "x": 250, "y": 200 }
+    },
+    {
+      "id": "moc",
+      "titleKey": "poems.moc_title",
+      "contentKey": "poems.moc_content",
+      "imageSrc": "/images/moc.jpg",
+      "keywords": ["power", "death", "faith", "body"],
+      "connections": ["niespelnienie", "miara-wszechrzeczy"],
+      "position": { "x": 350, "y": 250 }
+    },
+    {
+      "id": "marzenie",
+      "titleKey": "poems.marzenie_title",
+      "contentKey": "poems.marzenie_content",
+      "imageSrc": "/images/marzenie.png",
+      "keywords": ["non_existence", "meaning", "existence", "universe"],
+      "connections": ["swiaty", "rozrzutnosc"],
+      "position": { "x": 750, "y": 200 }
+    },
+    {
+      "id": "miara-wszechrzeczy",
+      "titleKey": "poems.miara-wszechrzeczy_title",
+      "contentKey": "poems.miara-wszechrzeczy_content",
+      "imageSrc": "/images/miara-wszechrzeczy.png",
+      "keywords": ["poet", "cognition", "thought", "secret"],
+      "connections": ["moc", "poeci-sa-wsrod-nas", "tajemnica"],
+      "position": { "x": 450, "y": 300 }
+    },
+    {
+      "id": "nagroda-i-kara",
+      "titleKey": "poems.nagroda-i-kara_title",
+      "contentKey": "poems.nagroda-i-kara_content",
+      "imageSrc": "/images/kara.png",
+      "keywords": ["reward", "punishment", "good", "evil"],
+      "connections": ["nagroda", "dylemat"],
+      "position": { "x": 150, "y": 50 }
+    },
+    {
+      "id": "nagroda",
+      "titleKey": "poems.nagroda_title",
+      "contentKey": "poems.nagroda_content",
+      "imageSrc": "/images/nagroda.png",
+      "keywords": ["reward", "offspring", "world", "helplessness"],
+      "connections": ["nagroda-i-kara", "obietnica"],
+      "position": { "x": 250, "y": 50 }
+    },
+    {
+      "id": "obietnica",
+      "titleKey": "poems.obietnica_title",
+      "contentKey": "poems.obietnica_content",
+      "imageSrc": "/images/obietnica.png",
+      "keywords": ["soul", "memory", "body", "good"],
+      "connections": ["nagroda", "pamiec"],
+      "position": { "x": 350, "y": 80 }
+    },
+    {
+      "id": "chlopiec-z-basenu",
+      "titleKey": "poems.chlopiec-z-basenu_title",
+      "contentKey": "poems.chlopiec-z-basenu_content",
+      "imageSrc": "/images/chlopiec.png",
+      "keywords": ["soul", "body", "life", "birth"],
+      "connections": ["obietnica", "dylemat"],
+      "position": { "x": 30, "y": 350 }
+    },
+    {
+      "id": "pamiec",
+      "titleKey": "poems.pamiec_title",
+      "contentKey": "poems.pamiec_content",
+      "imageSrc": "/images/pamiec.png",
+      "keywords": ["memory", "existence", "silence", "being"],
+      "connections": ["obietnica", "wiersz-nostalgiczny"],
+      "position": { "x": 450, "y": 120 }
+    },
+    {
+      "id": "zlecenie-od-pana-boga",
+      "titleKey": "poems.zlecenie-od-pana-boga_title",
+      "contentKey": "poems.zlecenie-od-pana-boga_content",
+      "imageSrc": "/images/zlecenie.png",
+      "keywords": ["existence", "questions", "dream", "silence"],
+      "connections": ["pytanie", "poeci-sa-wsrod-nas"],
+      "position": { "x": 650, "y": 480 }
+    },
+    {
+      "id": "pietno",
+      "titleKey": "poems.pietno_title",
+      "contentKey": "poems.pietno_content",
+      "imageSrc": "/images/pietno.png",
+      "keywords": ["love", "end", "dimension", "existence"],
+      "connections": ["witryna", "tajemnica"],
+      "position": { "x": 50, "y": 180 }
+    },
+    {
+      "id": "poeci-sa-wsrod-nas",
+      "titleKey": "poems.poeci-sa-wsrod-nas_title",
+      "contentKey": "poems.poeci-sa-wsrod-nas_content",
+      "imageSrc": "/images/poeci.png",
+      "keywords": ["poets", "knowledge", "world", "god"],
+      "connections": ["miara-wszechrzeczy", "zlecenie-od-pana-boga"],
+      "position": { "x": 550, "y": 350 }
+    },
+    {
+      "id": "przyszlosc",
+      "titleKey": "poems.przyszlosc_title",
+      "contentKey": "poems.przyszlosc_content",
+      "imageSrc": "/images/przyszlosc.png",
+      "keywords": ["future", "road", "destination", "non_existence"],
+      "connections": ["rozrzutnosc", "droga"],
+      "position": { "x": 650, "y": 150 }
+    },
+    {
+      "id": "pytanie",
+      "titleKey": "poems.pytanie_title",
+      "contentKey": "poems.pytanie_content",
+      "imageSrc": "/images/pytanie.png",
+      "keywords": ["question", "love", "sin", "who_am_i"],
+      "connections": ["zlecenie-od-pana-boga", "dylemat"],
+      "position": { "x": 580, "y": 530 }
+    },
+    {
+      "id": "uczucie",
+      "titleKey": "poems.uczucie_title",
+      "contentKey": "poems.uczucie_content",
+      "imageSrc": "/images/uczucie.png",
+      "keywords": ["feeling", "life", "emptiness", "universe"],
+      "connections": ["kadlubek", "szal"],
+      "position": { "x": 100, "y": 500 }
+    },
+    {
+      "id": "spacer",
+      "titleKey": "poems.spacer_title",
+      "contentKey": "poems.spacer_content",
+      "imageSrc": "/images/spacer.png",
+      "keywords": ["life", "death", "love", "walk"],
+      "connections": ["dobrze-ze-jestes", "wiersz-nostalgiczny"],
+      "position": { "x": 600, "y": 50 }
+    },
+    {
+      "id": "swiaty",
+      "titleKey": "poems.swiaty_title",
+      "contentKey": "poems.swiaty_content",
+      "imageSrc": "/images/swiaty.png",
+      "keywords": ["worlds", "infinity", "being", "end"],
+      "connections": ["marzenie", "rozrzutnosc"],
+      "position": { "x": 780, "y": 130 }
+    },
+    {
+      "id": "tajemnica",
+      "titleKey": "poems.tajemnica_title",
+      "contentKey": "poems.tajemnica_content",
+      "imageSrc": "/images/tajemnica.jpg",
+      "keywords": ["secret", "truth", "question", "memory"],
+      "connections": ["miara-wszechrzeczy", "pietno"],
+      "position": { "x": 480, "y": 200 }
+    },
+    {
+      "id": "apokalipsa-wedlug-adama",
+      "titleKey": "poems.apokalipsa-wedlug-adama_title",
+      "contentKey": "poems.apokalipsa-wedlug-adama_content",
+      "imageSrc": "/images/apokalipsa.png",
+      "keywords": ["apocalypse", "end", "cognition", "earth"],
+      "connections": ["wiersz-na-czasy-eschatyczne", "niespelnienie"],
+      "position": { "x": 200, "y": 280 }
+    },
+    {
+      "id": "wiersz-nostalgiczny",
+      "titleKey": "poems.wiersz-nostalgiczny_title",
+      "contentKey": "poems.wiersz-nostalgiczny_content",
+      "imageSrc": "/images/nostalgiczny.png",
+      "keywords": ["life", "death", "time", "memory"],
+      "connections": ["pamiec", "spacer"],
+      "position": { "x": 550, "y": 100 }
+    },
+    {
+      "id": "wiersz-na-czasy-eschatyczne",
+      "titleKey": "poems.wiersz-na-czasy-eschatyczne_title",
+      "contentKey": "poems.wiersz-na-czasy-eschatyczne_content",
+      "imageSrc": "/images/eschatyczne.png",
+      "keywords": ["end", "god", "people", "silence"],
+      "connections": ["apokalipsa-wedlug-adama", "swiaty"],
+      "position": { "x": 220, "y": 350 }
+    },
+    {
+      "id": "droga",
+      "titleKey": "poems.droga_title",
+      "contentKey": "poems.droga_content",
+      "imageSrc": "/images/droga.png",
+      "keywords": ["road", "end", "journey", "time"],
+      "connections": ["przyszlosc", "spacer"],
+      "position": { "x": 680, "y": 250 }
+    },
+    {
+      "id": "dlon",
+      "titleKey": "poems.dlon_title",
+      "contentKey": "poems.dlon_content",
+      "imageSrc": "/images/dlon.png",
+      "keywords": ["hand", "love", "hope", "touch"],
+      "connections": ["dobrze-ze-jestes", "zdziwienie", "szal"],
+      "position": { "x": 100, "y": 400 }
+    },
+    {
+      "id": "dobrze-ze-jestes",
+      "titleKey": "poems.dobrze-ze-jestes_title",
+      "contentKey": "poems.dobrze-ze-jestes_content",
+      "imageSrc": "/images/jestes.png",
+      "keywords": ["love", "longing", "presence", "loneliness"],
+      "connections": ["dlon", "szal", "spacer"],
+      "position": { "x": 200, "y": 520 }
+    },
+    {
+      "id": "szal",
+      "titleKey": "poems.szal_title",
+      "contentKey": "poems.szal_content",
+      "imageSrc": "/images/szal.png",
+      "keywords": ["closeness", "memory", "soul", "touch"],
+      "connections": ["dobrze-ze-jestes", "dlon"],
+      "position": { "x": 50, "y": 450 }
+    },
+    {
+      "id": "my-wszechswiat",
+      "titleKey": "poems.my-wszechswiat_title",
+      "contentKey": "poems.my-wszechswiat_content",
+      "imageSrc": "/images/wszechswiat.png",
+      "keywords": ["universe", "existence", "truth", "secret", "being"],
+      "connections": ["swiaty", "tajemnica", "marzenie"],
+      "position": { "x": 600, "y": 400 }
     }
   ],
   "author": {
-    "name": "Adam Gierczak",
-    "description": "Kontrowersyjny poeta eksplorujący granice między świadomością a podświadomością.",
-    "bio": "Autor tomiku 'Wiersze antypowabne' wydanego w Radomiu w 2016 roku."
+    "nameKey": "author.name",
+    "descriptionKey": "author.description",
+    "bioKey": "author.bio"
   },
   "metadata": {
-    "scrapedAt": "2025-09-12T16:26:55.966Z",
-    "sourceUrl": "https://poetry.netlify.app/",
+    "scrapedAt": "2025-09-12T20:20:00.000Z",
+    "sourceUrl": "Wiersze antypowabne, Radom 2016",
     "totalPoems": 33
   }
 }

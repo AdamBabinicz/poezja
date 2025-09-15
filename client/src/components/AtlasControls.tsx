@@ -1,7 +1,24 @@
-import { ZoomIn, ZoomOut, RotateCcw, Moon, Sun, Globe } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useTranslation } from 'react-i18next';
-import { useTheme } from '@/contexts/ThemeContext';
+import {
+  ZoomIn,
+  ZoomOut,
+  RotateCcw,
+  Moon,
+  Sun,
+  Globe,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useTranslation } from "react-i18next";
+import { useTheme } from "@/contexts/ThemeContext";
+import { useSound } from "@/contexts/SoundContext";
+import { useLocation } from "wouter";
 
 interface AtlasControlsProps {
   onZoomIn: () => void;
@@ -10,53 +27,62 @@ interface AtlasControlsProps {
   scale: number;
 }
 
-export default function AtlasControls({ 
-  onZoomIn, 
-  onZoomOut, 
-  onReset, 
-  scale 
+const supportedLanguages = [
+  { code: "pl", name: "Polski" },
+  { code: "en", name: "English" },
+  { code: "is", name: "Íslenska" },
+];
+
+export default function AtlasControls({
+  onZoomIn,
+  onZoomOut,
+  onReset,
+  scale,
 }: AtlasControlsProps) {
   const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useTheme();
+  const { isSoundEnabled, toggleSound } = useSound();
+  const [, navigate] = useLocation();
 
-  const toggleLanguage = () => {
-    const newLang = i18n.language === 'pl' ? 'en' : 'pl';
-    i18n.changeLanguage(newLang);
+  const changeLanguage = (langCode: string) => {
+    i18n.changeLanguage(langCode);
+    navigate(`/${langCode}`);
   };
+
+  const currentLanguageCode = i18n.language.split("-")[0];
 
   return (
     <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
-      {/* Zoom controls */}
       <div className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg p-2 flex flex-col gap-1">
         <Button
           size="icon"
           variant="ghost"
           onClick={onZoomIn}
           disabled={scale >= 3}
-          aria-label={t('atlas.zoomIn')}
+          aria-label={t("atlas.zoomIn")}
           data-testid="button-zoom-in"
           className="h-8 w-8"
         >
           <ZoomIn className="h-4 w-4" />
         </Button>
-        
+
         <Button
           size="icon"
           variant="ghost"
           onClick={onZoomOut}
           disabled={scale <= 0.3}
-          aria-label={t('atlas.zoomOut')}
+          aria-label={t("atlas.zoomOut")}
           data-testid="button-zoom-out"
           className="h-8 w-8"
         >
           <ZoomOut className="h-4 w-4" />
         </Button>
-        
+
         <Button
           size="icon"
           variant="ghost"
           onClick={onReset}
-          aria-label={t('atlas.reset')}
+          aria-label={t("atlas.reset")}
           data-testid="button-reset-view"
           className="h-8 w-8"
         >
@@ -64,32 +90,64 @@ export default function AtlasControls({
         </Button>
       </div>
 
-      {/* Theme and language controls */}
       <div className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg p-2 flex flex-col gap-1">
         <Button
           size="icon"
           variant="ghost"
           onClick={toggleTheme}
-          aria-label={t('accessibility.themeToggle')}
+          aria-label={t("accessibility.themeToggle")}
           data-testid="button-theme-toggle"
           className="h-8 w-8"
         >
-          {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          {theme === "dark" ? (
+            <Sun className="h-4 w-4" />
+          ) : (
+            <Moon className="h-4 w-4" />
+          )}
         </Button>
-        
+
         <Button
           size="icon"
           variant="ghost"
-          onClick={toggleLanguage}
-          aria-label={t('accessibility.languageToggle')}
-          data-testid="button-language-toggle"
+          onClick={toggleSound}
+          aria-label="Toggle sound"
+          data-testid="button-sound-toggle"
           className="h-8 w-8"
         >
-          <Globe className="h-4 w-4" />
+          {isSoundEnabled ? (
+            <Volume2 className="h-4 w-4" />
+          ) : (
+            <VolumeX className="h-4 w-4" />
+          )}
         </Button>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              size="icon"
+              variant="ghost"
+              aria-label={t("accessibility.languageToggle")}
+              data-testid="button-language-toggle"
+              className="h-8 w-8"
+            >
+              <Globe className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {supportedLanguages.map((lang) => (
+              <DropdownMenuItem
+                key={lang.code}
+                onClick={() => changeLanguage(lang.code)}
+                disabled={currentLanguageCode === lang.code}
+                className="cursor-pointer"
+              >
+                {lang.name}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
-      {/* Scale indicator */}
       <div className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg px-3 py-1">
         <span className="text-xs text-muted-foreground">
           {Math.round(scale * 100)}%

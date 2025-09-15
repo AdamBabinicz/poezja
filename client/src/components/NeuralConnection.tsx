@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import type { Poem } from '@/data/mockPoems';
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import type { Poem } from "@/data/mockPoems";
 
 interface NeuralConnectionProps {
   from: Poem;
@@ -9,74 +9,68 @@ interface NeuralConnectionProps {
   opacity?: number;
 }
 
-export default function NeuralConnection({ 
-  from, 
-  to, 
-  isActive, 
-  opacity = 0.3 
+// Definiujemy kolory jako stałe, aby uniknąć problemów z animacją
+const activeColor = "hsl(var(--neural-highlight))";
+const inactiveColor = "hsl(var(--neural-connection))";
+
+export default function NeuralConnection({
+  from,
+  to,
+  isActive,
+  opacity = 0.5, // Zwiększamy domyślną, minimalną przezroczystość
 }: NeuralConnectionProps) {
   const { t } = useTranslation();
 
-  const controlPoint1X = from.position.x + (to.position.x - from.position.x) * 0.3;
+  const pathId = `path-${from.id}-${to.id}`;
+
+  const controlPoint1X =
+    from.position.x + (to.position.x - from.position.x) * 0.3;
   const controlPoint1Y = from.position.y - 50;
-  const controlPoint2X = from.position.x + (to.position.x - from.position.x) * 0.7;
+  const controlPoint2X =
+    from.position.x + (to.position.x - from.position.x) * 0.7;
   const controlPoint2Y = to.position.y - 50;
 
-  const path = `M ${from.position.x} ${from.position.y} 
-                C ${controlPoint1X} ${controlPoint1Y}, 
-                  ${controlPoint2X} ${controlPoint2Y}, 
+  const path = `M ${from.position.x} ${from.position.y}
+                C ${controlPoint1X} ${controlPoint1Y},
+                  ${controlPoint2X} ${controlPoint2Y},
                   ${to.position.x} ${to.position.y}`;
 
   return (
-    <motion.g
-      initial={{ opacity: 0, pathLength: 0 }}
-      animate={{ 
-        opacity: isActive ? 0.8 : opacity,
-        pathLength: 1 
-      }}
-      transition={{ duration: 1.5, ease: "easeInOut" }}
-    >
-      {/* Connection path */}
+    <g>
       <motion.path
+        id={pathId}
         d={path}
         fill="none"
-        stroke="hsl(200 80% 65%)"
-        strokeWidth={isActive ? 2 : 1}
+        stroke={inactiveColor} // Ustawiamy kolor bazowy
         strokeDasharray="2,2"
         className="filter drop-shadow-sm"
-        style={{ pointerEvents: 'none' }}
+        style={{ pointerEvents: "none" }}
+        initial={{ pathLength: 0, opacity: 0, strokeWidth: 1.5 }}
         animate={{
-          strokeWidth: isActive ? 3 : 1,
-          stroke: isActive ? "hsl(40 60% 75%)" : "hsl(200 80% 65%)"
+          pathLength: 1,
+          opacity: isActive ? 0.9 : opacity,
+          strokeWidth: isActive ? 2.5 : 1.5,
+          stroke: isActive ? activeColor : inactiveColor,
         }}
-        transition={{ duration: 0.3 }}
-        aria-label={t('accessibility.connection')}
+        transition={{
+          pathLength: { duration: 1.5, ease: "easeInOut" },
+          default: { duration: 0.3 },
+        }}
+        aria-label={t("accessibility.connection")}
       />
-      
-      {/* Flowing particle effect */}
-      {isActive && (
-        <circle
-          r="2"
-          fill="hsl(180 60% 70%)"
-          opacity="0.8"
-          style={{ pointerEvents: 'none' }}
-        >
-          <animateMotion
-            dur="3s"
-            repeatCount="indefinite"
-            path={path}
-          />
-        </circle>
-      )}
 
-      {/* Gradient glow */}
-      <defs>
-        <linearGradient id="connectionGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="hsl(180 60% 70%)" stopOpacity="0" />
-          <stop offset="50%" stopColor="hsl(200 80% 65%)" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="hsl(180 60% 70%)" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </motion.g>
+      <motion.circle
+        r={2}
+        fill={activeColor}
+        style={{ pointerEvents: "none" }}
+        initial={{ opacity: 0, r: 2 }}
+        animate={{ opacity: isActive ? 0.9 : 0, r: 2 }}
+        transition={{ duration: 0.3 }}
+      >
+        <animateMotion dur="3s" repeatCount="indefinite">
+          <mpath href={`#${pathId}`} />
+        </animateMotion>
+      </motion.circle>
+    </g>
   );
 }

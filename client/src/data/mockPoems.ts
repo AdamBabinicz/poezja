@@ -1,128 +1,89 @@
-// TODO: Replace with real data from poetry.netlify.app scraping
+import poetryDataJson from "./poetry-data.json";
+
 export interface Poem {
   id: string;
-  title: string;
-  content: string[];
-  imageSrc: string;
+  titleKey: string;
+  contentKey: string;
+  imageSrc?: string;
   keywords: string[];
   position: { x: number; y: number };
   connections: string[];
+  isSpecial?: boolean;
 }
 
-const realPoemTitles = [
-  "Moc", "Niespełnienie", "Obietnica", "Witryna", "Wiersz na czasy eschatyczne",
-  "My, Wszechświat", "Apokalipsa według Adama", "Marzenie", "Kadłubek", "Uczucie",
-  "Szal", "Chłopiec z basenu", "Dłoń", "Miara Wszechrzeczy", "Poeci są wśród nas",
-  "Zlecenie od Pana Boga", "Droga", "Nagroda", "Piętno", "Pytanie",
-  "Dziadek do orzechów", "Rozrzutność", "Przyszłość", "Nagroda i kara", "Światy",
-  "Wiersz nostalgiczny", "Pamięć", "Głos", "Dylemat", "Tajemnica",
-  "Spacer", "Dobrze, że jesteś", "Zdziwienie"
+export interface Author {
+  nameKey: string;
+  descriptionKey: string;
+  bioKey: string;
+}
+
+interface RawPoem {
+  id: string;
+  titleKey: string;
+  contentKey: string;
+  imageSrc?: string;
+  keywords: string[];
+  connections: string[];
+}
+
+interface RawPoetryData {
+  poems: RawPoem[];
+  author: Author;
+  metadata: {
+    scrapedAt: string;
+    sourceUrl: string;
+    totalPoems: number;
+  };
+}
+
+const rawPoetryData: RawPoetryData = poetryDataJson as RawPoetryData;
+
+const fixedPositions = [
+  { x: 100, y: 100 }, // witryna
+  { x: 700, y: 80 }, // rozrzutnosc
+  { x: 250, y: 450 }, // glos
+  { x: 50, y: 250 }, // dziadek-do-orzechow
+  { x: 180, y: 150 }, // dylemat
+  { x: 120, y: 320 }, // zdziwienie
+  { x: 350, y: 500 }, // kadlubek
+  { x: 250, y: 200 }, // niespelnienie
+  { x: 350, y: 250 }, // moc
+  { x: 750, y: 200 }, // marzenie
+  { x: 450, y: 300 }, // miara-wszechrzeczy
+  { x: 150, y: 50 }, // nagroda-i-kara
+  { x: 250, y: 50 }, // nagroda
+  { x: 350, y: 80 }, // obietnica
+  { x: 30, y: 350 }, // chlopiec-z-basenu
+  { x: 450, y: 120 }, // pamiec
+  { x: 650, y: 480 }, // zlecenie-od-pana-boga
+  { x: 50, y: 180 }, // pietno
+  { x: 550, y: 350 }, // poeci-sa-wsrod-nas
+  { x: 650, y: 150 }, // przyszlosc
+  { x: 580, y: 530 }, // pytanie
+  { x: 100, y: 500 }, // uczucie
+  { x: 600, y: 50 }, // spacer
+  { x: 780, y: 130 }, // swiaty
+  { x: 480, y: 200 }, // tajemnica
+  { x: 200, y: 280 }, // apokalipsa-wedlug-adama
+  { x: 550, y: 100 }, // wiersz-nostalgiczny
+  { x: 220, y: 350 }, // wiersz-na-czasy-eschatyczne
+  { x: 680, y: 250 }, // droga
+  { x: 100, y: 400 }, // dlon
+  { x: 200, y: 520 }, // dobrze-ze-jestes
+  { x: 50, y: 450 }, // szal
+  { x: 600, y: 400 }, // <-- TO JEST POZYCJA DLA "My, Wszechświat"
 ];
 
-// Helper function to generate keywords (assuming this exists elsewhere or needs to be defined)
-const generateKeywordsForPoem = (title: string): string[] => {
-  // Placeholder for keyword generation logic
-  return title.toLowerCase().split(' ').slice(0, 3).concat(['poezja']);
-};
-
-// Helper function to generate connections (assuming this exists elsewhere or needs to be defined)
-const generateConnections = (index: number, total: number): string[] => {
-  // Placeholder for connection generation logic
-  const connections = [];
-  if (index > 0) connections.push(`poem-${index}`);
-  if (index < total - 1) connections.push(`poem-${index + 2}`);
-  return connections.slice(0, 2);
-};
-
-
-// Generate positions with proper spacing to avoid overlaps
-const generateNodePositions = (): Poem[] => {
-  const totalPoems = realPoemTitles.length;
-  const positions: Array<{ x: number; y: number }> = [];
-
-  // Canvas dimensions with padding
-  const canvasWidth = 800;
-  const canvasHeight = 600;
-  const padding = 100;
-  const workingWidth = canvasWidth - (padding * 2);
-  const workingHeight = canvasHeight - (padding * 2);
-
-  // Minimum distance between nodes (including space for titles)
-  const minDistance = 120; // Increased from ~60 to ensure title spacing
-
-  // Use a spiral distribution pattern for better space utilization
-  const generateSpiralPositions = () => {
-    const center = { x: canvasWidth / 2, y: canvasHeight / 2 };
-    const positions: Array<{ x: number; y: number }> = [];
-
-    for (let i = 0; i < totalPoems; i++) {
-      let attempts = 0;
-      let position: { x: number; y: number };
-
-      do {
-        if (i === 0) {
-          // First node at center
-          position = { x: center.x, y: center.y };
-        } else {
-          // Generate position using golden angle spiral
-          const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // Golden angle in radians
-          const radius = Math.sqrt(i) * 25; // Increased spacing multiplier
-          const angle = i * goldenAngle;
-
-          position = {
-            x: center.x + radius * Math.cos(angle) + (Math.random() - 0.5) * 30,
-            y: center.y + radius * Math.sin(angle) + (Math.random() - 0.5) * 30
-          };
-
-          // Ensure position is within bounds
-          position.x = Math.max(padding, Math.min(canvasWidth - padding, position.x));
-          position.y = Math.max(padding, Math.min(canvasHeight - padding, position.y));
-        }
-
-        // Check if this position is far enough from existing positions
-        const tooClose = positions.some(existing => {
-          const distance = Math.sqrt(
-            Math.pow(position.x - existing.x, 2) +
-            Math.pow(position.y - existing.y, 2)
-          );
-          return distance < minDistance;
-        });
-
-        if (!tooClose || attempts > 50) {
-          break;
-        }
-
-        attempts++;
-      } while (attempts <= 50);
-
-      positions.push(position);
-    }
-
-    return positions;
+export const poems: Poem[] = rawPoetryData.poems.map((jsonPoem, index) => {
+  const position = fixedPositions[index] || {
+    x: 150 + (index % 6) * 120,
+    y: 120 + Math.floor(index / 6) * 90,
   };
 
-  const spiralPositions = generateSpiralPositions();
+  return {
+    ...jsonPoem,
+    position,
+  };
+});
 
-  return realPoemTitles.map((title, index) => {
-    const position = spiralPositions[index] || { x: 400, y: 300 };
-
-    return {
-      id: `poem-${index + 1}`,
-      title,
-      position,
-      content: `This is the full text of the poem "${title}". It explores themes of...`,
-      keywords: generateKeywordsForPoem(title),
-      connections: generateConnections(index, realPoemTitles.length),
-      createdAt: new Date().toISOString()
-    };
-  });
-};
-
-export const mockPoems: Poem[] = generateNodePositions();
-
-
-export const authorInfo = {
-  name: "Neuralny Poeta",
-  description: "Autor urodził się dokładnie 100 lat później, niż Nikola Tesla. Nie tytułuje się żadnym przedrostkiem. Nie ma wyuczonego zawodu. W swoim życiu był dekoratorem, roznosicielem mleka, twarożkarzem, obserwatorem meteo, szlifierzem, krawcem, kierownikiem marketu, sprzedawcą. Jako subiekt przez witrynę sklepową obserwował przechodzących ludzi. Wtedy zauważył, że są jak „na sznurkach\". Interesuje się kosmologią. Nie posiada dorobku; w żadnej dziedzinie nie osiągnął mistrzostwa. W życiu prywatnym - rozwiedziony.",
-  bio: ""
-};
+export const author: Author = rawPoetryData.author;
