@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "homeTitle": "Neurologiczny Atlas Umysłu Poety",
+    "siteName": "Wizjoner - Atlas Neurologiczny",
+    "defaultDescription": "Interaktywna wizualizacja poezji Adama Gierczaka, przedstawiająca sieć tematycznych połączeń między wierszami."
+  },
   "navigation": {
     "home": "Atlas",
     "about": "O Autorze",

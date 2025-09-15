@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "homeTitle": "Taugakort af Hugskoti Skálds",
+    "siteName": "Hugsjónamaður - Taugakort",
+    "defaultDescription": "Gagnvirk sýning á ljóðum Adams Gierczak, sem sýnir net þematengsla milli ljóða."
+  },
   "navigation": {
     "home": "Atlas",
     "about": "Um Höfundinn",

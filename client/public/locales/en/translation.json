@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "homeTitle": "Neurological Atlas of a Poet's Mind",
+    "siteName": "Visionary - Neurological Atlas",
+    "defaultDescription": "An interactive visualization of Adam Gierczak's poetry, presenting a network of thematic connections between poems."
+  },
   "navigation": {
     "home": "Atlas",
     "about": "About Author",
