@@ -4,7 +4,7 @@
       "id": "witryna",
       "titleKey": "poems.witryna_title",
       "contentKey": "poems.witryna_content",
-      "imageSrc": "/images/witryna.avif",
+      "imageSrc": "/images/witryn.avif",
       "keywords": ["people", "time", "angel", "hell"],
       "connections": ["dylemat", "pietno"],
       "position": { "x": 100, "y": 100 }
