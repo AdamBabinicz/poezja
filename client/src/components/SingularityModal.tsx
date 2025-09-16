@@ -242,7 +242,7 @@ export default function SingularityModal({
                 size="icon"
                 variant="ghost"
                 onClick={handleClose}
-                className="!absolute top-3 right-3 z-50 h-8 w-8 rounded-full"
+                className="!absolute top-1 right-1 md:top-3 md:right-3 z-50 h-8 w-8 rounded-full"
                 aria-label={t("poem.close")}
                 data-testid="button-close-singularity"
               >
