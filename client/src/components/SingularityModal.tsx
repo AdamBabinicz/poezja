@@ -237,8 +237,23 @@ export default function SingularityModal({
                   </motion.div>
                 </div>
               </div>
-
               <Button
+                size="icon"
+                variant="ghost"
+                onClick={handleClose}
+                className="!absolute top-1 right-1 md:top-3 md:right-3
+             z-50 h-8 w-8 rounded-full
+             bg-neutral-900 text-white
+             hover:bg-neutral-800 hover:scale-110 hover:shadow-lg
+             active:scale-95
+             transition duration-200 ease-out"
+                aria-label={t("poem.close")}
+                data-testid="button-close-singularity"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+
+              {/* <Button
                 size="icon"
                 variant="ghost"
                 onClick={handleClose}
@@ -247,7 +262,7 @@ export default function SingularityModal({
                 data-testid="button-close-singularity"
               >
                 <X className="h-4 w-4" />
-              </Button>
+              </Button> */}
             </motion.div>
           </motion.div>
         </>
