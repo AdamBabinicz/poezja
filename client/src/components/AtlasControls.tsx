@@ -148,7 +148,10 @@ export default function AtlasControls({
         </DropdownMenu>
       </div>
 
-      <div className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg px-3 py-1">
+      <div
+        className="bg-card/80 backdrop-blur-md border border-card-border rounded-lg px-3 py-1
+         flex items-center justify-center md:block"
+      >
         <span className="text-xs text-muted-foreground">
           {Math.round(scale * 100)}%
         </span>
