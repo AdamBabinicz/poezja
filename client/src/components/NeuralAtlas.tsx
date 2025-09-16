@@ -28,6 +28,9 @@ const singularityNode: FinalPoem = {
   isSpecial: true,
 };
 
+const MemoizedNeuralNode = React.memo(NeuralNode);
+const MemoizedNeuralConnection = React.memo(NeuralConnection);
+
 export default function NeuralAtlas({
   onSelectPoem,
   onOpenAuthorModal,
@@ -89,7 +92,7 @@ export default function NeuralAtlas({
     },
     {
       target: containerRef,
-      drag: { from: () => [position.x, position.y] },
+      drag: { from: () => [position.x, position.y], filterTaps: true },
       pinch: { from: () => [scale, 0] },
       wheel: { eventOptions: { passive: false } },
     }
@@ -99,7 +102,6 @@ export default function NeuralAtlas({
     (from: FinalPoem, to: FinalPoem) => {
       if (!hoveredPoem) return false;
       if (hoveredPoem.id === "singularity") return false;
-
       if (
         hoveredPoem.id === "author" &&
         (from.id === "author" || to.id === "author")
@@ -141,6 +143,7 @@ export default function NeuralAtlas({
       <div
         ref={containerRef}
         className="w-full h-full cursor-grab active:cursor-grabbing"
+        style={{ touchAction: "none" }}
         data-testid="neural-atlas-canvas"
       >
         <motion.div
@@ -186,7 +189,7 @@ export default function NeuralAtlas({
                 const connectedPoem = poems.find((p) => p.id === connectionId);
                 if (!connectedPoem || poem.id > connectionId) return null;
                 return (
-                  <NeuralConnection
+                  <MemoizedNeuralConnection
                     key={`${poem.id}-${connectionId}`}
                     from={poem}
                     to={connectedPoem}
@@ -198,20 +201,20 @@ export default function NeuralAtlas({
             )}
 
             {poems.map((poem) => (
-              <NeuralNode
+              <MemoizedNeuralNode
                 key={poem.id}
                 poem={poem}
-                onClick={() => handleNodeClick(poem.id)}
+                onNodeSelect={handleNodeClick}
                 onHover={setHoveredPoem}
                 isHighlighted={isPoemHighlighted(poem)}
                 scale={scale}
               />
             ))}
 
-            <NeuralNode
+            <MemoizedNeuralNode
               key={singularityNode.id}
               poem={singularityNode}
-              onClick={() => handleNodeClick(singularityNode.id)}
+              onNodeSelect={handleNodeClick}
               onHover={setHoveredPoem}
               isHighlighted={isPoemHighlighted(singularityNode)}
               scale={scale}
@@ -230,10 +233,7 @@ export default function NeuralAtlas({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
-        className="absolute top-8 left-0 w-full z-40 flex flex-col
-             items-center md:items-start
-             text-center md:text-left
-             md:pl-8"
+        className="absolute top-8 left-0 w-full z-40 flex flex-col items-center md:items-start text-center md:text-left md:pl-8"
       >
         <h1 className="text-2xl lg:text-3xl font-serif text-foreground mb-2">
           {t("atlas.title")}
