@@ -116,6 +116,10 @@ export function SEOHead({
       }}
     >
       <title>{pageTitle}</title>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no"
+      />
       <meta name="description" content={pageDescription} />
       <link rel="canonical" href={canonicalUrl} />
 

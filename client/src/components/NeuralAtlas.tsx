@@ -1,6 +1,7 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useGesture } from "@use-gesture/react";
 import NeuralNode from "./NeuralNode";
 import NeuralConnection from "./NeuralConnection";
 import AtlasControls from "./AtlasControls";
@@ -36,11 +37,8 @@ export default function NeuralAtlas({
 }: NeuralAtlasProps) {
   const { t } = useTranslation();
   const [hoveredPoem, setHoveredPoem] = useState<FinalPoem | null>(null);
-
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleZoomIn = useCallback(() => {
@@ -69,40 +67,33 @@ export default function NeuralAtlas({
     [onSelectPoem, onOpenAuthorModal, onOpenSingularityModal]
   );
 
-  const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
-      if (e.button !== 0) return;
-      const target = e.target as Element;
-      if (
-        target.closest("[data-neural-node]") ||
-        target.hasAttribute("data-neural-node")
-      ) {
-        return;
-      }
-      setIsDragging(true);
-      setDragStart({
-        x: e.clientX / scale - position.x,
-        y: e.clientY / scale - position.y,
-      });
+  useGesture(
+    {
+      onDrag: ({ pinching, cancel, offset: [x, y], event }) => {
+        const target = event.target as Element;
+        if (
+          pinching ||
+          target.closest("[data-neural-node]") ||
+          target.hasAttribute("data-neural-node")
+        )
+          return cancel();
+        setPosition({ x, y });
+      },
+      onPinch: ({ offset: [s] }) => {
+        setScale(Math.max(0.3, Math.min(3, s)));
+      },
+      onWheel: ({ delta: [, dy] }) => {
+        const zoomFactor = dy > 0 ? 0.9 : 1.1;
+        setScale((prev) => Math.max(0.3, Math.min(3, prev * zoomFactor)));
+      },
     },
-    [position, scale]
+    {
+      target: containerRef,
+      drag: { from: () => [position.x, position.y] },
+      pinch: { from: () => [scale, 0] },
+      wheel: { eventOptions: { passive: false } },
+    }
   );
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (isDragging) {
-        setPosition({
-          x: e.clientX / scale - dragStart.x,
-          y: e.clientY / scale - dragStart.y,
-        });
-      }
-    },
-    [isDragging, dragStart, scale]
-  );
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
 
   const isConnectionActive = useCallback(
     (from: FinalPoem, to: FinalPoem) => {
@@ -141,19 +132,6 @@ export default function NeuralAtlas({
     [highlightedKeyword, hoveredPoem]
   );
 
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const delta = e.deltaY > 0 ? 0.9 : 1.1;
-      setScale((prev) => Math.max(0.3, Math.min(3, prev * delta)));
-    };
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener("wheel", handleWheel, { passive: false });
-      return () => container.removeEventListener("wheel", handleWheel);
-    }
-  }, []);
-
   return (
     <div className="relative w-full h-screen overflow-hidden bg-background">
       <div className="absolute inset-0 opacity-5 pointer-events-none">
@@ -162,26 +140,17 @@ export default function NeuralAtlas({
 
       <div
         ref={containerRef}
-        className={`w-full h-full ${
-          isDragging ? "cursor-grabbing" : "cursor-grab"
-        }`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
+        className="w-full h-full cursor-grab active:cursor-grabbing"
         data-testid="neural-atlas-canvas"
       >
         <motion.div
           className="w-full h-full"
           style={{
             transformOrigin: "center center",
-          }}
-          animate={{
+            x: position.x,
+            y: position.y,
             scale,
-            x: position.x * scale,
-            y: position.y * scale,
           }}
-          transition={{ type: "tween", duration: 0.1, ease: "linear" }}
         >
           <svg
             width="100%"
