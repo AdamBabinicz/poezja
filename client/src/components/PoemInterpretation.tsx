@@ -16,14 +16,12 @@ export default function PoemInterpretation({
 }: PoemInterpretationProps) {
   const { t } = useTranslation();
 
-  // --- NOWA LOGIKA ---
-  // Dzielimy akapity na dwie kolumny, zapewniając, że lewa jest zawsze równa lub dłuższa.
   const midpoint = Math.ceil(interpretation.content.length / 2);
   const leftColumnContent = interpretation.content.slice(0, midpoint);
   const rightColumnContent = interpretation.content.slice(midpoint);
 
   return (
-    <div className="flex flex-col h-full p-6 lg:p-8 lg:px-12 xl:px-16 overflow-y-auto hide-scrollbar bg-card/50">
+    <div className="flex flex-col h-full p-6 lg:p-8 lg:px-12 xl:px-16 bg-card/50">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,9 +38,7 @@ export default function PoemInterpretation({
           {interpretation.title}
         </h3>
 
-        {/* Używamy siatki (Grid) dla pełnej kontroli nad układem kolumn na desktopie */}
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12">
-          {/* Lewa kolumna */}
           <div className="space-y-4">
             {leftColumnContent.map((paragraph, index) => (
               <motion.p
@@ -57,14 +53,12 @@ export default function PoemInterpretation({
             ))}
           </div>
 
-          {/* Prawa kolumna */}
           <div className="space-y-4">
             {rightColumnContent.map((paragraph, index) => (
               <motion.p
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                // Kontynuujemy opóźnienie animacji, aby była płynna
                 transition={{
                   delay: 0.4 + (leftColumnContent.length + index) * 0.15,
                 }}

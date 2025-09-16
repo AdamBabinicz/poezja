@@ -72,6 +72,7 @@ export default function AuthorModal({
             data-testid="author-modal-overlay"
           >
             <motion.div
+              id="modal-scroll-area"
               initial={{ scale: 0.8, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -205,17 +206,6 @@ export default function AuthorModal({
               >
                 <X className="h-4 w-4" />
               </Button>
-
-              {/* <Button
-                size="icon"
-                variant="ghost"
-                onClick={onClose}
-                className="!absolute top-1 right-1 md:top-3 md:right-3 z-50 h-8 w-8 rounded-full"
-                aria-label={t("poem.close")}
-                data-testid="button-close-author"
-              >
-                <X className="h-4 w-4" />
-              </Button> */}
             </motion.div>
           </motion.div>
         </>

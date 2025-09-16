@@ -18,6 +18,7 @@ import PoemModal from "./components/PoemModal";
 import AuthorModal from "./components/AuthorModal";
 import SingularityModal from "./components/SingularityModal";
 import type { Poem as FinalPoem } from "@/data/mockPoems";
+import { ScrollToTopButton } from "./components/ScrollToTopButton";
 
 function MainApp() {
   const [isLoading, setIsLoading] = useState(true);
@@ -121,6 +122,10 @@ function MainApp() {
         isOpen={isSingularityModalOpen}
         onClose={() => setIsSingularityModalOpen(false)}
       />
+
+      {(selectedPoem || isAuthorModalOpen || isSingularityModalOpen) && (
+        <ScrollToTopButton targetId="modal-scroll-area" />
+      )}
     </>
   );
 }

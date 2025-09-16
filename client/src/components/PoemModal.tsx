@@ -144,13 +144,13 @@ export default function PoemModal({
         ) : null;
       case "loading":
         return (
-          <div className="flex flex-col items-center justify-center h-full">
+          <div className="flex flex-col items-center justify-center h-full min-h-[50vh]">
             <Loader2 className="h-8 w-8 animate-spin text-neural-highlight" />
           </div>
         );
       case "error":
         return (
-          <div className="flex flex-col items-center justify-center h-full text-center p-4">
+          <div className="flex flex-col items-center justify-center h-full min-h-[50vh] text-center p-4">
             <AlertTriangle className="h-8 w-8 text-destructive mb-4" />
             <p className="text-foreground">
               Interpretacja dla tego wiersza nie została jeszcze dodana.
@@ -164,10 +164,10 @@ export default function PoemModal({
   };
 
   const PoemView = () => (
-    <div className="relative h-full flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden hide-scrollbar">
+    <div className="relative flex flex-col lg:flex-row">
       {poem.imageSrc && (
         <div className="lg:w-80 border-b lg:border-b-0 lg:border-r border-card-border shrink-0">
-          <div className="h-64 lg:h-full">
+          <div className="h-64 lg:h-full lg:sticky top-0">
             <img
               src={poem.imageSrc}
               alt={translatedTitle}
@@ -176,7 +176,7 @@ export default function PoemModal({
           </div>
         </div>
       )}
-      <div className="flex-1 p-6 lg:p-8 lg:overflow-y-auto hide-scrollbar">
+      <div className="flex-1 p-6 lg:p-8">
         <h2 className="text-3xl lg:text-4xl font-serif text-foreground mb-6">
           {translatedTitle}
         </h2>
@@ -193,7 +193,7 @@ export default function PoemModal({
           ))}
         </div>
       </div>
-      <div className="lg:w-80 border-t lg:border-t-0 lg:border-l border-card-border bg-card/50 backdrop-blur-sm p-6 flex flex-col justify-between shrink-0">
+      <div className="lg:w-80 border-t lg:border-t-0 lg:border-l border-card-border bg-card/50 backdrop-blur-sm p-6 flex flex-col justify-between shrink-0 lg:sticky lg:top-0 lg:h-screen">
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Hash className="h-5 w-5 text-muted-foreground" />
@@ -242,11 +242,12 @@ export default function PoemModal({
           onClick={onClose}
         >
           <motion.div
+            id="modal-scroll-area"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="absolute inset-4 md:inset-8 lg:inset-16 mx-auto max-w-screen-xl bg-card border border-card-border rounded-lg shadow-2xl overflow-hidden"
+            className="absolute inset-4 md:inset-8 lg:inset-16 mx-auto max-w-screen-xl bg-card border border-card-border rounded-lg shadow-2xl overflow-y-auto hide-scrollbar"
             onClick={(e) => e.stopPropagation()}
           >
             {poem.imageSrc && view === "poem" && (
@@ -262,7 +263,7 @@ export default function PoemModal({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="h-full"
+                className="relative"
               >
                 <MainContent />
               </motion.div>
@@ -282,16 +283,6 @@ export default function PoemModal({
             >
               <X className="h-4 w-4" />
             </Button>
-
-            {/* <Button
-              size="icon"
-              variant="ghost"
-              onClick={onClose}
-              className="!absolute top-1 right-1 md:top-3 md:right-3 z-50 h-8 w-8 rounded-full"
-              aria-label={t("poem.close")}
-            >
-              <X className="h-4 w-4" />
-            </Button> */}
           </motion.div>
         </motion.div>
       </AnimatePresence>
