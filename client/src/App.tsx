@@ -11,8 +11,8 @@ import LoadingScreen from "@/components/LoadingScreen";
 import { SoundProvider } from "@/contexts/SoundContext";
 import "./lib/i18n";
 import { useTranslation } from "react-i18next";
-import backgroundImage from "@assets/generated_images/Neural_network_background_visualization_6faa9190.png";
-import authorImage from "@assets/generated_images/Abstract_author_portrait_aaf38ae2.png";
+import backgroundImage from "@assets/generated_images/Neural_network_background_visualization_6faa9190.avif";
+import authorImage from "@assets/generated_images/Abstract_author_portrait_aaf38ae2.avif";
 import { SEOHead } from "./components/SEOHead";
 
 function MainApp() {
