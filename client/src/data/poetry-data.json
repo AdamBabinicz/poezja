@@ -4,7 +4,7 @@
       "id": "witryna",
       "titleKey": "poems.witryna_title",
       "contentKey": "poems.witryna_content",
-      "imageSrc": "/images/witryna.png",
+      "imageSrc": "/images/witryna.avif",
       "keywords": ["people", "time", "angel", "hell"],
       "connections": ["dylemat", "pietno"],
       "position": { "x": 100, "y": 100 }
@@ -13,7 +13,7 @@
       "id": "rozrzutnosc",
       "titleKey": "poems.rozrzutnosc_title",
       "contentKey": "poems.rozrzutnosc_content",
-      "imageSrc": "/images/1.jpg",
+      "imageSrc": "/images/1.avif",
       "keywords": ["non_existence", "god", "birth", "people"],
       "connections": ["przyszlosc", "swiaty"],
       "position": { "x": 700, "y": 80 }
@@ -22,7 +22,7 @@
       "id": "glos",
       "titleKey": "poems.glos_title",
       "contentKey": "poems.glos_content",
-      "imageSrc": "/images/glos.png",
+      "imageSrc": "/images/glos.avif",
       "keywords": ["thought", "body", "words", "imperfection"],
       "connections": ["kadlubek", "dlon"],
       "position": { "x": 250, "y": 450 }
@@ -31,7 +31,7 @@
       "id": "dziadek-do-orzechow",
       "titleKey": "poems.dziadek-do-orzechow_title",
       "contentKey": "poems.dziadek-do-orzechow_content",
-      "imageSrc": "/images/dziadek.png",
+      "imageSrc": "/images/dziadek.avif",
       "keywords": ["reality", "tragedy", "world", "dance"],
       "connections": ["zdziwienie", "chlopiec-z-basenu"],
       "position": { "x": 50, "y": 250 }
@@ -40,7 +40,7 @@
       "id": "dylemat",
       "titleKey": "poems.dylemat_title",
       "contentKey": "poems.dylemat_content",
-      "imageSrc": "/images/dylemat.png",
+      "imageSrc": "/images/dylemat.avif",
       "keywords": ["soul", "body", "life", "end"],
       "connections": ["witryna", "niespelnienie"],
       "position": { "x": 180, "y": 150 }
@@ -49,7 +49,7 @@
       "id": "zdziwienie",
       "titleKey": "poems.zdziwienie_title",
       "contentKey": "poems.zdziwienie_content",
-      "imageSrc": "/images/zdziwienie.png",
+      "imageSrc": "/images/zdziwienie.avif",
       "keywords": ["astonishment", "word", "star", "closeness"],
       "connections": ["dziadek-do-orzechow", "dlon"],
       "position": { "x": 120, "y": 320 }
@@ -58,7 +58,7 @@
       "id": "kadlubek",
       "titleKey": "poems.kadlubek_title",
       "contentKey": "poems.kadlubek_content",
-      "imageSrc": "/images/kadlubek.png",
+      "imageSrc": "/images/kadlubek.avif",
       "keywords": ["torso", "emptiness", "love", "life"],
       "connections": ["glos", "uczucie"],
       "position": { "x": 350, "y": 500 }
@@ -67,7 +67,7 @@
       "id": "niespelnienie",
       "titleKey": "poems.niespelnienie_title",
       "contentKey": "poems.niespelnienie_content",
-      "imageSrc": "/images/niespelnienie.png",
+      "imageSrc": "/images/niespelnienie.avif",
       "keywords": ["nothingness", "body", "power", "end"],
       "connections": ["dylemat", "moc"],
       "position": { "x": 250, "y": 200 }
@@ -76,7 +76,7 @@
       "id": "moc",
       "titleKey": "poems.moc_title",
       "contentKey": "poems.moc_content",
-      "imageSrc": "/images/moc.jpg",
+      "imageSrc": "/images/moc.avif",
       "keywords": ["power", "death", "faith", "body"],
       "connections": ["niespelnienie", "miara-wszechrzeczy"],
       "position": { "x": 350, "y": 250 }
@@ -85,7 +85,7 @@
       "id": "marzenie",
       "titleKey": "poems.marzenie_title",
       "contentKey": "poems.marzenie_content",
-      "imageSrc": "/images/marzenie.png",
+      "imageSrc": "/images/marzenie.avif",
       "keywords": ["non_existence", "meaning", "existence", "universe"],
       "connections": ["swiaty", "rozrzutnosc"],
       "position": { "x": 750, "y": 200 }
@@ -94,7 +94,7 @@
       "id": "miara-wszechrzeczy",
       "titleKey": "poems.miara-wszechrzeczy_title",
       "contentKey": "poems.miara-wszechrzeczy_content",
-      "imageSrc": "/images/miara-wszechrzeczy.png",
+      "imageSrc": "/images/miara-wszechrzeczy.avif",
       "keywords": ["poet", "cognition", "thought", "secret"],
       "connections": ["moc", "poeci-sa-wsrod-nas", "tajemnica"],
       "position": { "x": 450, "y": 300 }
@@ -103,7 +103,7 @@
       "id": "nagroda-i-kara",
       "titleKey": "poems.nagroda-i-kara_title",
       "contentKey": "poems.nagroda-i-kara_content",
-      "imageSrc": "/images/kara.png",
+      "imageSrc": "/images/kara.avif",
       "keywords": ["reward", "punishment", "good", "evil"],
       "connections": ["nagroda", "dylemat"],
       "position": { "x": 150, "y": 50 }
@@ -112,7 +112,7 @@
       "id": "nagroda",
       "titleKey": "poems.nagroda_title",
       "contentKey": "poems.nagroda_content",
-      "imageSrc": "/images/nagroda.png",
+      "imageSrc": "/images/nagroda.avif",
       "keywords": ["reward", "offspring", "world", "helplessness"],
       "connections": ["nagroda-i-kara", "obietnica"],
       "position": { "x": 250, "y": 50 }
@@ -121,7 +121,7 @@
       "id": "obietnica",
       "titleKey": "poems.obietnica_title",
       "contentKey": "poems.obietnica_content",
-      "imageSrc": "/images/obietnica.png",
+      "imageSrc": "/images/obietnica.avif",
       "keywords": ["soul", "memory", "body", "good"],
       "connections": ["nagroda", "pamiec"],
       "position": { "x": 350, "y": 80 }
@@ -130,7 +130,7 @@
       "id": "chlopiec-z-basenu",
       "titleKey": "poems.chlopiec-z-basenu_title",
       "contentKey": "poems.chlopiec-z-basenu_content",
-      "imageSrc": "/images/chlopiec.png",
+      "imageSrc": "/images/chlopiec.avif",
       "keywords": ["soul", "body", "life", "birth"],
       "connections": ["obietnica", "dylemat"],
       "position": { "x": 30, "y": 350 }
@@ -139,7 +139,7 @@
       "id": "pamiec",
       "titleKey": "poems.pamiec_title",
       "contentKey": "poems.pamiec_content",
-      "imageSrc": "/images/pamiec.png",
+      "imageSrc": "/images/pamiec.avif",
       "keywords": ["memory", "existence", "silence", "being"],
       "connections": ["obietnica", "wiersz-nostalgiczny"],
       "position": { "x": 450, "y": 120 }
@@ -148,7 +148,7 @@
       "id": "zlecenie-od-pana-boga",
       "titleKey": "poems.zlecenie-od-pana-boga_title",
       "contentKey": "poems.zlecenie-od-pana-boga_content",
-      "imageSrc": "/images/zlecenie.png",
+      "imageSrc": "/images/zlecenie.avif",
       "keywords": ["existence", "questions", "dream", "silence"],
       "connections": ["pytanie", "poeci-sa-wsrod-nas"],
       "position": { "x": 650, "y": 480 }
@@ -157,7 +157,7 @@
       "id": "pietno",
       "titleKey": "poems.pietno_title",
       "contentKey": "poems.pietno_content",
-      "imageSrc": "/images/pietno.png",
+      "imageSrc": "/images/pietno.avif",
       "keywords": ["love", "end", "dimension", "existence"],
       "connections": ["witryna", "tajemnica"],
       "position": { "x": 50, "y": 180 }
@@ -166,7 +166,7 @@
       "id": "poeci-sa-wsrod-nas",
       "titleKey": "poems.poeci-sa-wsrod-nas_title",
       "contentKey": "poems.poeci-sa-wsrod-nas_content",
-      "imageSrc": "/images/poeci.png",
+      "imageSrc": "/images/poeci.avif",
       "keywords": ["poets", "knowledge", "world", "god"],
       "connections": ["miara-wszechrzeczy", "zlecenie-od-pana-boga"],
       "position": { "x": 550, "y": 350 }
@@ -175,7 +175,7 @@
       "id": "przyszlosc",
       "titleKey": "poems.przyszlosc_title",
       "contentKey": "poems.przyszlosc_content",
-      "imageSrc": "/images/przyszlosc.png",
+      "imageSrc": "/images/przyszlosc.avif",
       "keywords": ["future", "road", "destination", "non_existence"],
       "connections": ["rozrzutnosc", "droga"],
       "position": { "x": 650, "y": 150 }
@@ -184,7 +184,7 @@
       "id": "pytanie",
       "titleKey": "poems.pytanie_title",
       "contentKey": "poems.pytanie_content",
-      "imageSrc": "/images/pytanie.png",
+      "imageSrc": "/images/pytanie.avif",
       "keywords": ["question", "love", "sin", "who_am_i"],
       "connections": ["zlecenie-od-pana-boga", "dylemat"],
       "position": { "x": 580, "y": 530 }
@@ -193,7 +193,7 @@
       "id": "uczucie",
       "titleKey": "poems.uczucie_title",
       "contentKey": "poems.uczucie_content",
-      "imageSrc": "/images/uczucie.png",
+      "imageSrc": "/images/uczucie.avif",
       "keywords": ["feeling", "life", "emptiness", "universe"],
       "connections": ["kadlubek", "szal"],
       "position": { "x": 100, "y": 500 }
@@ -202,7 +202,7 @@
       "id": "spacer",
       "titleKey": "poems.spacer_title",
       "contentKey": "poems.spacer_content",
-      "imageSrc": "/images/spacer.png",
+      "imageSrc": "/images/spacer.avif",
       "keywords": ["life", "death", "love", "walk"],
       "connections": ["dobrze-ze-jestes", "wiersz-nostalgiczny"],
       "position": { "x": 600, "y": 50 }
@@ -211,7 +211,7 @@
       "id": "swiaty",
       "titleKey": "poems.swiaty_title",
       "contentKey": "poems.swiaty_content",
-      "imageSrc": "/images/swiaty.png",
+      "imageSrc": "/images/swiaty.avif",
       "keywords": ["worlds", "infinity", "being", "end"],
       "connections": ["marzenie", "rozrzutnosc"],
       "position": { "x": 780, "y": 130 }
@@ -220,7 +220,7 @@
       "id": "tajemnica",
       "titleKey": "poems.tajemnica_title",
       "contentKey": "poems.tajemnica_content",
-      "imageSrc": "/images/tajemnica.jpg",
+      "imageSrc": "/images/tajemnica.avif",
       "keywords": ["secret", "truth", "question", "memory"],
       "connections": ["miara-wszechrzeczy", "pietno"],
       "position": { "x": 480, "y": 200 }
@@ -229,7 +229,7 @@
       "id": "apokalipsa-wedlug-adama",
       "titleKey": "poems.apokalipsa-wedlug-adama_title",
       "contentKey": "poems.apokalipsa-wedlug-adama_content",
-      "imageSrc": "/images/apokalipsa.png",
+      "imageSrc": "/images/apokalipsa.avif",
       "keywords": ["apocalypse", "end", "cognition", "earth"],
       "connections": ["wiersz-na-czasy-eschatyczne", "niespelnienie"],
       "position": { "x": 200, "y": 280 }
@@ -238,7 +238,7 @@
       "id": "wiersz-nostalgiczny",
       "titleKey": "poems.wiersz-nostalgiczny_title",
       "contentKey": "poems.wiersz-nostalgiczny_content",
-      "imageSrc": "/images/nostalgiczny.png",
+      "imageSrc": "/images/nostalgiczny.avif",
       "keywords": ["life", "death", "time", "memory"],
       "connections": ["pamiec", "spacer"],
       "position": { "x": 550, "y": 100 }
@@ -247,7 +247,7 @@
       "id": "wiersz-na-czasy-eschatyczne",
       "titleKey": "poems.wiersz-na-czasy-eschatyczne_title",
       "contentKey": "poems.wiersz-na-czasy-eschatyczne_content",
-      "imageSrc": "/images/eschatyczne.png",
+      "imageSrc": "/images/eschatyczne.avif",
       "keywords": ["end", "god", "people", "silence"],
       "connections": ["apokalipsa-wedlug-adama", "swiaty"],
       "position": { "x": 220, "y": 350 }
@@ -256,7 +256,7 @@
       "id": "droga",
       "titleKey": "poems.droga_title",
       "contentKey": "poems.droga_content",
-      "imageSrc": "/images/droga.png",
+      "imageSrc": "/images/droga.avif",
       "keywords": ["road", "end", "journey", "time"],
       "connections": ["przyszlosc", "spacer"],
       "position": { "x": 680, "y": 250 }
@@ -265,7 +265,7 @@
       "id": "dlon",
       "titleKey": "poems.dlon_title",
       "contentKey": "poems.dlon_content",
-      "imageSrc": "/images/dlon.png",
+      "imageSrc": "/images/dlon.avif",
       "keywords": ["hand", "love", "hope", "touch"],
       "connections": ["dobrze-ze-jestes", "zdziwienie", "szal"],
       "position": { "x": 100, "y": 400 }
@@ -274,7 +274,7 @@
       "id": "dobrze-ze-jestes",
       "titleKey": "poems.dobrze-ze-jestes_title",
       "contentKey": "poems.dobrze-ze-jestes_content",
-      "imageSrc": "/images/jestes.png",
+      "imageSrc": "/images/jestes.avif",
       "keywords": ["love", "longing", "presence", "loneliness"],
       "connections": ["dlon", "szal", "spacer"],
       "position": { "x": 200, "y": 520 }
@@ -283,7 +283,7 @@
       "id": "szal",
       "titleKey": "poems.szal_title",
       "contentKey": "poems.szal_content",
-      "imageSrc": "/images/szal.png",
+      "imageSrc": "/images/szal.avif",
       "keywords": ["closeness", "memory", "soul", "touch"],
       "connections": ["dobrze-ze-jestes", "dlon"],
       "position": { "x": 50, "y": 450 }
@@ -292,7 +292,7 @@
       "id": "my-wszechswiat",
       "titleKey": "poems.my-wszechswiat_title",
       "contentKey": "poems.my-wszechswiat_content",
-      "imageSrc": "/images/wszechswiat.png",
+      "imageSrc": "/images/wszechswiat.avif",
       "keywords": ["universe", "existence", "truth", "secret", "being"],
       "connections": ["swiaty", "tajemnica", "marzenie"],
       "position": { "x": 600, "y": 400 }

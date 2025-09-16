@@ -73,7 +73,7 @@ function extractPoems(html) {
         id: generateSlug(title),
         title: title,
         content: contentLines,
-        imageSrc: `/images/${generateSlug(title)}.jpg`, // Placeholder dla ścieżki do obrazka
+        imageSrc: `/images/${generateSlug(title)}.avif`, // Placeholder dla ścieżki do obrazka
         keywords: extractKeywords(title + " " + contentLines.join(" ")),
         connections: [], // Zostaną wygenerowane później
         position: { x: 0, y: 0 }, // Pozycje i tak są nadpisywane w innym pliku

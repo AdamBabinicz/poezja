@@ -29,7 +29,7 @@ export function SEOHead({
 
   const siteName = t("seo.siteName");
   const defaultDescription = t("seo.defaultDescription");
-  const defaultImage = `${siteUrl}/17.png`;
+  const defaultImage = `${siteUrl}/witryna.png`;
   const twitterHandle = "@AdamBabinicz";
 
   const pageTitle = titleKey

@@ -76,12 +76,12 @@ export default function AuthorModal({
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="absolute inset-4 md:inset-8 lg:inset-16 bg-card border border-card-border rounded-lg shadow-2xl overflow-hidden"
+              className="absolute inset-4 md:inset-8 lg:inset-16 bg-card border border-card-border rounded-lg shadow-2xl overflow-y-auto lg:overflow-hidden hide-scrollbar"
               onClick={(e) => e.stopPropagation()}
               data-testid="author-modal-content"
             >
-              <div className="h-full flex flex-col lg:flex-row">
-                <div className="lg:w-1/2 relative bg-gradient-to-br from-neural-node/20 to-neural-connection/20 flex items-center justify-center p-8">
+              <div className="flex flex-col lg:h-full lg:flex-row">
+                <div className="lg:w-1/2 relative bg-gradient-to-br from-neural-node/20 to-neural-connection/20 flex items-center justify-center p-8 border-b lg:border-b-0 lg:border-r border-card-border">
                   {authorImage ? (
                     <motion.img
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -103,7 +103,7 @@ export default function AuthorModal({
                   )}
                 </div>
 
-                <div className="flex-1 p-6 lg:p-8 overflow-y-auto hide-scrollbar flex flex-col">
+                <div className="flex-1 p-6 lg:p-8 lg:overflow-y-auto hide-scrollbar flex flex-col">
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
