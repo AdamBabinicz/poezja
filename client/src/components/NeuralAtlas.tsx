@@ -255,18 +255,34 @@ export default function NeuralAtlas({ authorImage }: NeuralAtlasProps) {
         onReset={handleReset}
         scale={scale}
       />
-
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
-        className="absolute top-8 left-8 z-40"
+        className="absolute top-8 left-0 w-full z-40 flex flex-col
+             items-center md:items-start
+             text-center md:text-left
+             md:pl-8"
       >
         <h1 className="text-2xl lg:text-3xl font-serif text-foreground mb-2">
           {t("atlas.title")}
         </h1>
         <p className="text-muted-foreground max-w-md">{t("atlas.subtitle")}</p>
       </motion.div>
+
+      {/* <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1 }}
+        className="absolute top-8 left-0 w-full z-40 flex flex-col justify-center md:justify-start"
+      >
+        <h1 className="text-2xl lg:text-3xl font-serif text-foreground mb-2">
+          {t("atlas.title")}
+        </h1>
+        <p className="text-muted-foreground max-w-md md:pl-8">
+          {t("atlas.subtitle")}
+        </p>
+      </motion.div> */}
 
       {highlightedKeyword && (
         <motion.div

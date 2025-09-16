@@ -112,9 +112,9 @@ export default function AuthorModal({
                   >
                     <div className="flex items-center gap-3 mb-6">
                       <User className="h-6 w-6 text-neural-highlight" />
-                      <h1 className="text-3xl font-serif text-foreground">
+                      <h2 className="text-3xl font-serif text-foreground">
                         {t("author.title")}
-                      </h1>
+                      </h2>
                     </div>
 
                     <motion.h2

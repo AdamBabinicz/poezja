@@ -177,9 +177,9 @@ export default function PoemModal({
         </div>
       )}
       <div className="flex-1 p-6 lg:p-8 lg:overflow-y-auto hide-scrollbar">
-        <h1 className="text-3xl lg:text-4xl font-serif text-foreground mb-6">
+        <h2 className="text-3xl lg:text-4xl font-serif text-foreground mb-6">
           {translatedTitle}
-        </h1>
+        </h2>
         <div className="prose prose-lg dark:prose-invert max-w-none">
           {translatedContent.map((line, index) => (
             <p

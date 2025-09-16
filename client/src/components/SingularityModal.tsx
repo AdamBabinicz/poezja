@@ -42,9 +42,9 @@ const MainContent = () => {
     <>
       <div className="flex items-center gap-3 mb-8">
         <Key className="h-6 w-6 text-neural-highlight" />
-        <h1 className="text-3xl font-serif text-foreground">
+        <h2 className="text-3xl font-serif text-foreground">
           {t(contentKeys.title)}
-        </h1>
+        </h2>
       </div>
       <div className="space-y-8 max-w-3xl">
         {contentKeys.sections.map((section, index: number) => (
@@ -100,7 +100,7 @@ const LegalContent = ({
           <ArrowLeft className="h-5 w-5" />
         </Button>
         <FileText className="h-6 w-6 text-neural-highlight" />
-        <h1 className="text-3xl font-serif text-foreground">{t(titleKey)}</h1>
+        <h2 className="text-3xl font-serif text-foreground">{t(titleKey)}</h2>
       </div>
       <div className="space-y-4 max-w-3xl text-foreground/90 leading-relaxed">
         {content.map((paragraph: string, index: number) => (
@@ -173,11 +173,11 @@ export default function SingularityModal({
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="absolute inset-4 md:inset-8 lg:inset-16 bg-card border border-card-border rounded-lg shadow-2xl overflow-hidden"
+              className="absolute inset-4 md:inset-8 lg:inset-16 bg-card border border-card-border rounded-lg shadow-2xl overflow-y-auto lg:overflow-hidden hide-scrollbar"
               onClick={(e) => e.stopPropagation()}
               data-testid="singularity-modal-content"
             >
-              <div className="h-full flex flex-col lg:flex-row">
+              <div className="flex flex-col lg:h-full lg:flex-row">
                 <div className="lg:w-1/3 relative bg-gradient-to-br from-neural-node/20 to-neural-connection/20 flex items-center justify-center p-8 border-b lg:border-b-0 lg:border-r border-card-border">
                   <motion.img
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -189,7 +189,7 @@ export default function SingularityModal({
                   />
                 </div>
 
-                <div className="flex-1 p-6 lg:p-8 overflow-y-auto hide-scrollbar">
+                <div className="flex-1 p-6 lg:p-8 lg:overflow-y-auto hide-scrollbar">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={legalView || "main"}
