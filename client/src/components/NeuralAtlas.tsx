@@ -4,14 +4,17 @@ import { useTranslation } from "react-i18next";
 import NeuralNode from "./NeuralNode";
 import NeuralConnection from "./NeuralConnection";
 import AtlasControls from "./AtlasControls";
-import PoemModal from "./PoemModal";
-import AuthorModal from "./AuthorModal";
-import SingularityModal from "./SingularityModal";
 import { poems } from "@/data/poetryData";
 import type { Poem as FinalPoem } from "@/data/mockPoems";
+import React from "react";
 
 interface NeuralAtlasProps {
   authorImage: string;
+  onSelectPoem: (poem: FinalPoem | null) => void;
+  onOpenAuthorModal: () => void;
+  onOpenSingularityModal: () => void;
+  highlightedKeyword: string | null;
+  onClearHighlight: () => void;
 }
 
 const singularityNode: FinalPoem = {
@@ -24,20 +27,21 @@ const singularityNode: FinalPoem = {
   isSpecial: true,
 };
 
-export default function NeuralAtlas({ authorImage }: NeuralAtlasProps) {
+export default function NeuralAtlas({
+  onSelectPoem,
+  onOpenAuthorModal,
+  onOpenSingularityModal,
+  highlightedKeyword,
+  onClearHighlight,
+}: NeuralAtlasProps) {
   const { t } = useTranslation();
-  const [selectedPoem, setSelectedPoem] = useState<FinalPoem | null>(null);
   const [hoveredPoem, setHoveredPoem] = useState<FinalPoem | null>(null);
-  const [highlightedKeyword, setHighlightedKeyword] = useState<string | null>(
-    null
-  );
+
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isAuthorModalOpen, setIsAuthorModalOpen] = useState(false);
-  const [isSingularityModalOpen, setIsSingularityModalOpen] = useState(false);
 
   const handleZoomIn = useCallback(() => {
     setScale((prev) => Math.min(prev * 1.2, 3));
@@ -48,24 +52,22 @@ export default function NeuralAtlas({ authorImage }: NeuralAtlasProps) {
   const handleReset = useCallback(() => {
     setScale(1);
     setPosition({ x: 0, y: 0 });
-    setHighlightedKeyword(null);
-  }, []);
+    onClearHighlight();
+  }, [onClearHighlight]);
 
-  const handleNodeClick = useCallback((nodeId: string) => {
-    if (nodeId === "author") {
-      setIsAuthorModalOpen(true);
-    } else if (nodeId === "singularity") {
-      setIsSingularityModalOpen(true);
-    } else {
-      const poem = poems.find((p) => p.id === nodeId);
-      setSelectedPoem(poem || null);
-    }
-  }, []);
-
-  const handleKeywordClick = useCallback((keyword: string) => {
-    setHighlightedKeyword(keyword);
-    setSelectedPoem(null);
-  }, []);
+  const handleNodeClick = useCallback(
+    (nodeId: string) => {
+      if (nodeId === "author") {
+        onOpenAuthorModal();
+      } else if (nodeId === "singularity") {
+        onOpenSingularityModal();
+      } else {
+        const poem = poems.find((p) => p.id === nodeId);
+        onSelectPoem(poem || null);
+      }
+    },
+    [onSelectPoem, onOpenAuthorModal, onOpenSingularityModal]
+  );
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent) => {
@@ -270,20 +272,6 @@ export default function NeuralAtlas({ authorImage }: NeuralAtlasProps) {
         <p className="text-muted-foreground max-w-md">{t("atlas.subtitle")}</p>
       </motion.div>
 
-      {/* <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1 }}
-        className="absolute top-8 left-0 w-full z-40 flex flex-col justify-center md:justify-start"
-      >
-        <h1 className="text-2xl lg:text-3xl font-serif text-foreground mb-2">
-          {t("atlas.title")}
-        </h1>
-        <p className="text-muted-foreground max-w-md md:pl-8">
-          {t("atlas.subtitle")}
-        </p>
-      </motion.div> */}
-
       {highlightedKeyword && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -297,7 +285,7 @@ export default function NeuralAtlas({ authorImage }: NeuralAtlasProps) {
             {t(`keywords.${highlightedKeyword}`, highlightedKeyword)}
           </p>
           <button
-            onClick={() => setHighlightedKeyword(null)}
+            onClick={onClearHighlight}
             className="text-xs text-muted-foreground hover:text-foreground mt-2"
             data-testid="button-clear-highlight"
           >
@@ -305,23 +293,6 @@ export default function NeuralAtlas({ authorImage }: NeuralAtlasProps) {
           </button>
         </motion.div>
       )}
-
-      <PoemModal
-        poem={selectedPoem}
-        onClose={() => setSelectedPoem(null)}
-        onKeywordClick={handleKeywordClick}
-      />
-
-      <AuthorModal
-        isOpen={isAuthorModalOpen}
-        onClose={() => setIsAuthorModalOpen(false)}
-        authorImage={authorImage}
-      />
-
-      <SingularityModal
-        isOpen={isSingularityModalOpen}
-        onClose={() => setIsSingularityModalOpen(false)}
-      />
     </div>
   );
 }

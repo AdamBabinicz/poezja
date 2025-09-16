@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { HelmetProvider } from "react-helmet-async";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useCallback } from "react";
 import NeuralAtlas from "@/components/NeuralAtlas";
 import LoadingScreen from "@/components/LoadingScreen";
 import { SoundProvider } from "@/contexts/SoundContext";
@@ -14,12 +14,28 @@ import { useTranslation } from "react-i18next";
 import backgroundImage from "@assets/generated_images/Neural_network_background_visualization_6faa9190.avif";
 import authorImage from "@assets/generated_images/Abstract_author_portrait_aaf38ae2.avif";
 import { SEOHead } from "./components/SEOHead";
+import PoemModal from "./components/PoemModal";
+import AuthorModal from "./components/AuthorModal";
+import SingularityModal from "./components/SingularityModal";
+import type { Poem as FinalPoem } from "@/data/mockPoems";
 
 function MainApp() {
   const [isLoading, setIsLoading] = useState(true);
   const { i18n, t } = useTranslation();
   const [, params] = useRoute("/:lang");
   const lang = params?.lang || "pl";
+
+  const [selectedPoem, setSelectedPoem] = useState<FinalPoem | null>(null);
+  const [isAuthorModalOpen, setIsAuthorModalOpen] = useState(false);
+  const [isSingularityModalOpen, setIsSingularityModalOpen] = useState(false);
+  const [highlightedKeyword, setHighlightedKeyword] = useState<string | null>(
+    null
+  );
+
+  const handleKeywordClick = useCallback((keyword: string) => {
+    setHighlightedKeyword(keyword);
+    setSelectedPoem(null);
+  }, []);
 
   useEffect(() => {
     if (i18n.language !== lang) {
@@ -79,8 +95,32 @@ function MainApp() {
           className="fixed inset-0 opacity-10 bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
-        <NeuralAtlas authorImage={authorImage} />
+        <NeuralAtlas
+          authorImage={authorImage}
+          onSelectPoem={setSelectedPoem}
+          onOpenAuthorModal={() => setIsAuthorModalOpen(true)}
+          onOpenSingularityModal={() => setIsSingularityModalOpen(true)}
+          highlightedKeyword={highlightedKeyword}
+          onClearHighlight={() => setHighlightedKeyword(null)}
+        />
       </div>
+
+      <PoemModal
+        poem={selectedPoem}
+        onClose={() => setSelectedPoem(null)}
+        onKeywordClick={handleKeywordClick}
+      />
+
+      <AuthorModal
+        isOpen={isAuthorModalOpen}
+        onClose={() => setIsAuthorModalOpen(false)}
+        authorImage={authorImage}
+      />
+
+      <SingularityModal
+        isOpen={isSingularityModalOpen}
+        onClose={() => setIsSingularityModalOpen(false)}
+      />
     </>
   );
 }
